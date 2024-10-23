@@ -41,3 +41,7 @@ string ALU::decToHex(int dec) {
     reverse(ret.begin(), ret.end());
     return ret;
 }
+
+void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
+    reg.setCell(idxRegister1, reg.getCell(idxRegister2) + reg.getCell(idxRegister3));
+}
