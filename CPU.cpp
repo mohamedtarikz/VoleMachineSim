@@ -54,3 +54,11 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         cu.halt();
     }
 }
+
+void CPU::runNextStep(Memory& mem) {
+    fetch(mem);
+    if(alu.isValid(IR)) {
+        vector<int> instruction = decode();
+        execute(reg, mem, instruction);
+    }
+}
