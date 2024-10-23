@@ -45,7 +45,7 @@ public:
     // Method to convert a decimal integer to a hexadecimal string
     static string decToHex(int);
     // Method to add to register values
-    int add(int idxRegister1, int idxRegister2, Register& reg);
+    void add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
 };
 
 // CU class to handle control operations
@@ -77,7 +77,7 @@ class CPU {
     // Method to decode the fetched instruction
     vector<int> decode();
     // Method to execute the decoded instruction
-    void execute(Memory&, vector<int>);
+    void execute(Register&, Memory&, vector<int>);
 public:
     // Constructor to initialize the CPU
     CPU();
