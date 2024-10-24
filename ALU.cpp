@@ -2,6 +2,62 @@
 #include <regex>
 #include <valarray>
 
+string ALU::cnvrtToFloatingPoint(double dec) {
+    char sign = '0';
+    if(dec < 0){
+        sign = '1';
+        dec *= -1;
+    }
+    int intPart = (int)dec;
+    double fracPart = dec - intPart;
+    string intPartBin = decToBin(intPart);
+    string fracPartBin;
+    while(fracPart > 0){
+        fracPart *= 2;
+        if(fracPart >= 1){
+            fracPartBin += '1';
+            fracPart -= 1;
+        }
+        else{
+            fracPartBin += '0';
+        }
+    }
+    string all = intPartBin + fracPartBin;
+    while(all.size() < 8){
+        all += '0';
+    }
+    int idx = 0;
+    while(all[idx] == '0'){
+        idx++;
+    }
+    int exp = intPartBin.size() - idx + 3;
+    string mant = all.substr(idx + 1, 4);
+    return sign + decToBin(exp, 3) + mant;
+}
+
+int ALU::binToDec(string bin) {
+    int ret = 0;
+    int idx = bin.size() - 1;
+    for (int i = 0; i < bin.size(); ++i) {
+        ret += (bin[i] - '0') * pow(2, idx);
+        idx--;
+    }
+    return ret;
+}
+
+string ALU::decToBin(int dec, int size) {
+    string ret;
+    while(dec > 0){
+        ret += to_string(dec % 2);
+        dec /= 2;
+    }
+    while(ret.size() < size){
+        ret += '0';
+    }
+    reverse(ret.begin(), ret.end());
+    return ret;
+}
+
 bool ALU::isValid(string hex) {
     bool valid = false;
     if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex [0] == 'B'){
@@ -40,6 +96,49 @@ string ALU::decToHex(int dec) {
     }
     reverse(ret.begin(), ret.end());
     return ret;
+}
+
+void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
+    string s1 = decToBin(reg.getCell(idxRegister2));
+    string s2 = decToBin(reg.getCell(idxRegister3));
+    int exp1 = binToDec(s1.substr(1, 3)) - 3;
+    int exp2 = binToDec(s2.substr(1, 3)) - 3;
+    double mant1 = binToDec(s1.substr(4, 4)) / 16.0 + 1;
+    double mant2 = binToDec(s2.substr(4, 4)) / 16.0 + 1;
+    if(exp1 < exp2){
+        swap(exp1, exp2);
+        swap(mant1, mant2);
+    }
+    while(exp2 > exp1){
+        mant1 *= 2;
+        exp1--;
+    }
+    double ans = (mant1 + mant2) * pow(2, exp1);
+    string s = cnvrtToFloatingPoint(ans);
+    reg.setCell(idxRegister1, binToDec(s));
+}
+
+void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register &reg) {
+    string a = decToBin(reg.getCell(idxRegister2));
+    string b = decToBin(reg.getCell(idxRegister3));
+    string x = a.substr(1, 7);
+    string y = b.substr(1, 7);
+    int A = binToDec(x);
+    int B = binToDec(y);
+    if(a[0] == '1'){
+        A = -A;
+    }
+    if(b[0] == '1'){
+        B = -B;
+    }
+    int C = A + B;
+    if(C < 0){
+        C = -C;
+        reg.setCell(idxRegister1, binToDec("1" + decToBin(C, 7)));
+    }
+    else{
+        reg.setCell(idxRegister1, binToDec("0" + decToBin(C, 7)));
+    }
 }
 
 void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
