@@ -35,6 +35,19 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     return sign + decToBin(exp, 3) + mant;
 }
 
+int ALU::cnvrtTwosComplement(string bin) {
+    int ret = 0;
+    for(int i = 0; i < bin.size(); ++i){
+        if(i == 0 && bin[i] == '1'){
+            ret -= pow(2, bin.size() - 1);
+        }
+        else{
+            ret += (bin[i] - '0') * pow(2, bin.size() - i - 1);
+        }
+    }
+    return ret;
+}
+
 int ALU::binToDec(string bin) {
     int ret = 0;
     int idx = bin.size() - 1;
@@ -114,31 +127,25 @@ void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3,
         exp1--;
     }
     double ans = (mant1 + mant2) * pow(2, exp1);
+    if(mant1 > mant2){
+        if(s1[0] == '1')
+            ans *= -1;
+    }
+    else{
+        if(s2[0] == '1')
+            ans *= -1;
+    }
     string s = cnvrtToFloatingPoint(ans);
     reg.setCell(idxRegister1, binToDec(s));
 }
 
 void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register &reg) {
-    string a = decToBin(reg.getCell(idxRegister2));
-    string b = decToBin(reg.getCell(idxRegister3));
-    string x = a.substr(1, 7);
-    string y = b.substr(1, 7);
-    int A = binToDec(x);
-    int B = binToDec(y);
-    if(a[0] == '1'){
-        A = -A;
-    }
-    if(b[0] == '1'){
-        B = -B;
-    }
-    int C = A + B;
-    if(C < 0){
-        C = -C;
-        reg.setCell(idxRegister1, binToDec("1" + decToBin(C, 7)));
-    }
-    else{
-        reg.setCell(idxRegister1, binToDec("0" + decToBin(C, 7)));
-    }
+    string a = decToBin(reg.getCell(idxRegister2), 8);
+    string b = decToBin(reg.getCell(idxRegister3), 8);
+    int x = cnvrtTwosComplement(a);
+    int y = cnvrtTwosComplement(b);
+    int z = x + y;
+    reg.setCell(idxRegister1, z);
 }
 
 void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
