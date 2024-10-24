@@ -37,6 +37,7 @@ public:
 
 // ALU class to handle arithmetic and logic operations
 class ALU {
+    string cnvrtToFloatingPoint(double);
 public:
     // Method to check if a string is a valid hexadecimal number
     bool isValid(string);
@@ -44,6 +45,10 @@ public:
     static int hexToDec(string);
     // Method to convert a decimal integer to a hexadecimal string
     static string decToHex(int);
+    static int binToDec(string);
+    static string decToBin(int, int = 9);
+    void sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    void sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
     // Method to add to register values
     void add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
 };
