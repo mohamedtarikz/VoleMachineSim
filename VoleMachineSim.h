@@ -38,6 +38,7 @@ public:
 // ALU class to handle arithmetic and logic operations
 class ALU {
     string cnvrtToFloatingPoint(double);
+    int cnvrtTwosComplement(string);
 public:
     // Method to check if a string is a valid hexadecimal number
     bool isValid(string);
