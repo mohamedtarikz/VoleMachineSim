@@ -145,6 +145,13 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     int x = cnvrtTwosComplement(a);
     int y = cnvrtTwosComplement(b);
     int z = x + y;
+    if(z < 0){
+        string s = decToBin(-z, 8);
+        for(int i = 0; s[i] != '1' && i < s.size(); ++i){
+            s[i] = (s[i] == '0' ? '1' : '0');
+        }
+        z = binToDec(s);
+    }
     reg.setCell(idxRegister1, z);
 }
 
