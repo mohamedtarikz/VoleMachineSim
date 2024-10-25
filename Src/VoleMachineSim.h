@@ -100,7 +100,13 @@ public:
 };
 
 class MainUI{
-
+    int choice;
+    fstream dataFile;
+public:
+    void DisplayOuputMenu();
+    void DisplayoperationMenu();
+    int getchoice(int choicese_size);
+    void loadinstruction(vector<string>& instructions);
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H
