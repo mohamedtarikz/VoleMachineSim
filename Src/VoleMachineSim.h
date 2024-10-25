@@ -121,6 +121,7 @@ public:
     void DisplayoperationMenu();
     int getchoice(int choicese_size);
     vector<string>& loadinstruction();
+
     fstream& LoadFile();
     static void outputState(Register& mainRegister);
     static void outputState(Memory& mainMemory);

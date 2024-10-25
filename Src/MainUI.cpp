@@ -48,7 +48,7 @@ fstream& MainUI::LoadFile() {
 vector<string>& MainUI::loadinstruction(){
     vector<string> instructions;
     string instruction;
-    cout<<"Please enter the instructions in hex format. Enter C000 as a last instruction."<<endl;
+    cout<<"Please enter the instructions in hex format. Enter C000 as a last instruction. "<<endl;
     while(true){
         cin>>instruction;
         if(instruction=="C000")
