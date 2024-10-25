@@ -86,3 +86,9 @@ void MainUI::DisplayoperationMenu() {
         return;
     }
 };
+void MainUI::PrintRegister(Register& mainRegister) {
+    cout << "Current state of registers:" << endl;
+    for (int i = 0; i < 16; ++i) {
+        cout << "Register[" << i << "] = " <<  mainRegister.getCell(i)<< endl;
+    }
+};

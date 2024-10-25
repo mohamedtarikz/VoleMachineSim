@@ -107,6 +107,7 @@ public:
     void DisplayoperationMenu();
     int getchoice(int choicese_size);
     void loadinstruction(vector<string>& instructions);
+    void PrintRegister(Register& mainRegister);
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H
