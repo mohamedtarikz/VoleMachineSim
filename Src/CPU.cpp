@@ -42,10 +42,10 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         cu.move(instruction[1], instruction[2], reg);
     }
     else if(instruction[0] == 5){
-        alu.add(instruction[1], instruction[2], instruction[3], reg);
+        alu.sumTwosComplement(instruction[1], instruction[2], instruction[3], reg);
     }
     else if(instruction[0] == 6){
-
+        alu.sumFloatingPoint(instruction[1], instruction[2], instruction[3], reg);
     }
     else if(instruction[0] == 11){
         cu.jump(instruction[1], instruction[2], reg, PC);
