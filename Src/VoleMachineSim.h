@@ -16,7 +16,9 @@ public:
     explicit Memory(fstream&);
     // Constructor to initialize memory from a vector of instructions
     explicit Memory(vector<string>);
+    // Method to load memory from a file
     void loadMemory(fstream& file);
+    // Method to load memory from a vector of instructions
     void loadMemory(vector<string> instructions);
     // Method to set a value in a memory cell
     void setCell(int index, string value);
@@ -39,7 +41,9 @@ public:
 
 // ALU class to handle arithmetic and logic operations
 class ALU {
+    // Method to convert a decimal integer to a floating point binary string
     string cnvrtToFloatingPoint(double);
+    // Method to convert a binary string to a decimal integer in two's complement form
     int cnvrtTwosComplement(string);
 public:
     // Method to check if a string is a valid hexadecimal number
@@ -48,8 +52,11 @@ public:
     static int hexToDec(string);
     // Method to convert a decimal integer to a hexadecimal string
     static string decToHex(int);
+    // Method to convert a binary string to decimal integer
     static int binToDec(string);
-    static string decToBin(int, int = 9);
+    // Method to convert a decimal integer to a binary string
+    static string decToBin(int, int = 8);
+    // Method to sum
     void sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
     void sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
     // Method to add to register values
@@ -94,11 +101,15 @@ public:
 };
 
 // VoleMachineSim class
-class VoleMachineSim {
+class Machine {
     Memory mem;
     CPU cpu;
 public:
-    VoleMachineSim();
+    Machine(fstream&);
+    Machine(vector<string>);
+    void outputState(Register&);
+    void outputState(Memory&);
+    void outputState(Register&, Memory&);
 };
 
 class MainUI{
