@@ -28,6 +28,5 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
 }
 
 void CU::halt() {
-    // Print the state of the machine
-    // then exit
+    exit(0);
 }
