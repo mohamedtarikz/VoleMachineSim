@@ -62,3 +62,7 @@ void CPU::runNextStep(Memory& mem) {
         execute(reg, mem, instruction);
     }
 }
+
+Register CPU::getRegister() {
+    return reg;
+}

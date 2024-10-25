@@ -89,14 +89,18 @@ public:
     CPU();
     // Method to run the next step of the program
     void runNextStep(Memory&);
+    Register getRegister();
 };
 
 // VoleMachineSim class
-class VoleMachineSim {
+class Machine {
     Memory mem;
     CPU cpu;
 public:
-    VoleMachineSim();
+    Machine(fstream&);
+    Machine(vector<string>&);
+
+    pair<Memory, Register> getState();
 };
 
 class MainUI{
@@ -106,7 +110,7 @@ public:
     void DisplayOuputMenu();
     void DisplayoperationMenu();
     int getchoice(int choicese_size);
-    void loadinstruction(vector<string>& instructions);
+    vector<string>& loadinstruction();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H
