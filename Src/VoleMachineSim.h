@@ -77,7 +77,7 @@ public:
     // Method to jump to a memory location
     void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
-    void halt();
+    void halt(Register& reg);
 };
 
 // CPU class to handle the execution of instructions
@@ -96,6 +96,8 @@ class CPU {
 public:
     // Constructor to initialize the CPU
     CPU();
+    // Method to get the register object
+    Register& getRegister();
     // Method to run the next step of the program
     void runNextStep(Memory&);
 };
@@ -107,9 +109,8 @@ class Machine {
 public:
     Machine(fstream&);
     Machine(vector<string>);
-    void outputState(Register&);
-    void outputState(Memory&);
-    void outputState(Register&, Memory&);
+    Register& getRegister();
+    Memory& getMemory();
 };
 
 class MainUI{
@@ -120,7 +121,9 @@ public:
     void DisplayoperationMenu();
     int getchoice(int choicese_size);
     void loadinstruction(vector<string>& instructions);
-    void PrintRegister(Register& mainRegister);
+    static void outputState(Register& mainRegister);
+    static void outputState(Memory& mainMemory);
+    static void outputState(Register& mainRegister, Memory& mainMemory);
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H
