@@ -1,5 +1,6 @@
 #include "VoleMachineSim.h"
 #include <iostream>
+#include <thread>
 
 void CU::load(int idxRegister, int idxMemory, Register &reg, Memory &mem) {
     reg.setCell(idxRegister, ALU::hexToDec(mem.getCell(idxMemory)));
@@ -29,5 +30,6 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
 
 void CU::halt(Register& reg) {
     MainUI::outputState(reg);
+    this_thread::sleep_for(chrono::seconds(1));
     exit(0);
 }
