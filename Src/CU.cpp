@@ -30,6 +30,6 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
 
 void CU::halt(Register& reg) {
     MainUI::outputState(reg);
-    this_thread::sleep_for(chrono::seconds(1));
+    this_thread::sleep_for(chrono::seconds(8));
     exit(0);
 }
