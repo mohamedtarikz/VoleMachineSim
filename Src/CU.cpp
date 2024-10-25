@@ -27,6 +27,7 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
     PC = idxMemory;
 }
 
-void CU::halt() {
+void CU::halt(Register& reg) {
+    MainUI::outputState(reg);
     exit(0);
 }
