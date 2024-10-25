@@ -16,6 +16,8 @@ public:
     explicit Memory(fstream&);
     // Constructor to initialize memory from a vector of instructions
     explicit Memory(vector<string>);
+    void loadMemory(fstream& file);
+    void loadMemory(vector<string> instructions);
     // Method to set a value in a memory cell
     void setCell(int index, string value);
     // Method to get a value from a memory cell
