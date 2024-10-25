@@ -51,7 +51,7 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         cu.jump(instruction[1], instruction[2], reg, PC);
     }
     else if(instruction[0] == 12){
-        cu.halt();
+        cu.halt(reg);
     }
 }
 
@@ -61,4 +61,8 @@ void CPU::runNextStep(Memory& mem) {
         vector<int> instruction = decode();
         execute(reg, mem, instruction);
     }
+}
+
+Register& CPU::getRegister() {
+    return reg;
 }
