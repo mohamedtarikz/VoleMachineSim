@@ -30,20 +30,23 @@ string getFileName() {
     return file_name;
 }
 
-void LoadFile(fstream& dataFile) {
+fstream& MainUI::LoadFile() {
     string Filename;
+    fstream programFile(Filename,ios::in);
     while (true) {
         Filename = getFileName(); // Get file name from user
-        dataFile.open(Filename, ios::in); // Attempt to open the file
-        if (dataFile.fail()) {
+        programFile.open(Filename, ios::in); // Attempt to open the file
+        if (programFile.fail()) {
             cout << "Error opening file, please try again." << endl;
         } else {
             break; // File opened successfully
         }
     }
+    return programFile;
 }
 
-void MainUI::loadinstruction(vector<string>& instructions){
+vector<string>& MainUI::loadinstruction(){
+    vector<string> instructions;
     string instruction;
     cout<<"Please enter the instructions in hex format. Enter C000 as a last instruction."<<endl;
     while(true){
@@ -52,7 +55,7 @@ void MainUI::loadinstruction(vector<string>& instructions){
             break;
         instructions.push_back(instruction);
     }
-    Memory memory(instructions);
+    return instructions;
 }
 
 void MainUI::DisplayOuputMenu() {
@@ -73,13 +76,11 @@ void MainUI::DisplayoperationMenu() {
     choice = GetInputChoice("Please Enter your Choice: ",3);
     if (choice == 1) {
         cout << "Operation using a file." << endl;
-        LoadFile(dataFile);
-        Memory memory(dataFile);
+        Memory memory(LoadFile());
     }
     else if (choice == 2) {
         cout << "Manual input operation." << endl;
-        vector<string> instructions;
-        loadinstruction(instructions);
+        Memory memory(loadinstruction());
     }
     else if (choice == 3) {
         cout << "Exiting the program." << endl;

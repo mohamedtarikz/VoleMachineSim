@@ -120,7 +120,8 @@ public:
     void DisplayOuputMenu();
     void DisplayoperationMenu();
     int getchoice(int choicese_size);
-    void loadinstruction(vector<string>& instructions);
+    vector<string>& loadinstruction();
+    fstream& LoadFile();
     static void outputState(Register& mainRegister);
     static void outputState(Memory& mainMemory);
     static void outputState(Register& mainRegister, Memory& mainMemory);
