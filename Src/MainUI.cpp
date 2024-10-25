@@ -85,10 +85,24 @@ void MainUI::DisplayoperationMenu() {
         cout << "Exiting the program." << endl;
         return;
     }
-};
-void MainUI::PrintRegister(Register& mainRegister) {
-    cout << "Current state of registers:" << endl;
+}
+
+void MainUI::outputState(Register &mainRegister) {
+    cout << "Register State:" << endl;
     for (int i = 0; i < 16; ++i) {
-        cout << "Register[" << i << "] = " <<  mainRegister.getCell(i)<< endl;
+        cout << "Register[0x" << ALU::decToHex(i) << "] = " <<  ALU::decToHex(mainRegister.getCell(i))<< endl;
     }
 };
+
+void MainUI::outputState(Memory &mainMemory) {
+    cout << "Memory State:" << endl;
+    for (int i = 0; i < 256; ++i) {
+        cout << "Memory[0x" << ALU::decToHex(i) << "] = " <<  ALU::decToHex(ALU::hexToDec(mainMemory.getCell(i)))<< endl;
+    }
+}
+
+void MainUI::outputState(Register &mainRegister, Memory &mainMemory) {
+    outputState(mainRegister);
+    cout<<"--------------------------------"<<endl;
+    outputState(mainMemory);
+}
