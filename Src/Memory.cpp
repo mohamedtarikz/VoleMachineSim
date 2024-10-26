@@ -29,7 +29,7 @@ Memory::Memory(vector<string> instructions){
     }
 }
 
-void Memory::loadMemory(std::fstream &file) {
+void Memory::loadMemory(fstream &file) {
     string byte;
     int i = 0;
     while(i < 256 && file >> byte){
@@ -41,18 +41,18 @@ void Memory::loadMemory(std::fstream &file) {
     }
 }
 
-void Memory::loadMemory(vector<std::string> instructions) {
+void Memory::loadMemory(vector<string> instructions) {
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
         if(instructions[i].size() != 4)
             throw invalid_argument("Invalid byte size");
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
-        memory[i] = tmp;
+        memory[i*2] = tmp;
         tmp = "";
         tmp += instructions[i][2];
         tmp += instructions[i][3];
-        memory[i+1] = tmp;
+        memory[i*2+1] = tmp;
     }
 }
 
