@@ -72,7 +72,7 @@ void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
     cout << "Current state of Registers and Memory:" << endl;
     cout <<"Registers" << setw(2) << "|" << "Memory" << endl;
     for (int i = 0; i < 16; ++i) {
-        cout <<mainRegister.getCell(i) << setw(10) << "|";
+        cout <<ALU::decToHex(mainRegister.getCell(i)) << setw(10) << "|";
         for (int j = 0; j < 16; j++) {
             cout << mainMemory.getCell(i*16+j) << " ";
         }
@@ -83,7 +83,7 @@ void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
 void MainUI::handleChoiceOutput(int choice, Machine& machine) {
     switch (choice) {
     case 1:
-        while (machine.getCPU().getIR() != "0000" && machine.getCPU().getPC() < 256) {
+        while (machine.getCPU().getPC() < 256) {
             machine.getCPU().runNextStep(machine.getMemory());
         }
         break;
