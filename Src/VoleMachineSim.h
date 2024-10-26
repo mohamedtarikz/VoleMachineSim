@@ -12,6 +12,8 @@ class Memory {
     string memory[256]; // Array to store memory cells
     int size = 256; // Size of the memory
 public:
+    // Constructor to initialize memory with zeros
+    Memory();
     // Constructor to initialize memory from a file
     explicit Memory(fstream&);
     // Constructor to initialize memory from a vector of instructions
@@ -77,7 +79,7 @@ public:
     // Method to jump to a memory location
     void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
-    void halt(Register& reg);
+    void halt(Register& reg, Memory& mem);
 };
 
 // CPU class to handle the execution of instructions
@@ -96,6 +98,8 @@ class CPU {
 public:
     // Constructor to initialize the CPU
     CPU();
+    string getIR();
+    int getPC();
     // Method to get the register object
     Register& getRegister();
     // Method to run the next step of the program
@@ -107,25 +111,25 @@ class Machine {
     Memory mem;
     CPU cpu;
 public:
+    Machine();
     Machine(fstream&);
     Machine(vector<string>);
+    CPU& getCPU();
     Register& getRegister();
     Memory& getMemory();
 };
 
 class MainUI{
     int choice;
-    fstream dataFile;
 public:
-    void DisplayOuputMenu();
-    void DisplayoperationMenu();
+    int DisplayOuputMenu(Machine& machine);
+    int DisplayOperationMenu(Machine& machine);
     int getchoice(int choicese_size);
-    vector<string>& loadinstruction();
-
-    fstream& LoadFile();
-    static void outputState(Register& mainRegister);
-    static void outputState(Memory& mainMemory);
+    vector<string> loadinstruction();
+    void handleChoiceOutput(int choice, Machine& machine);
+    void handleChoiceOperation(int choice, Machine& machine);
     static void outputState(Register& mainRegister, Memory& mainMemory);
+    fstream LoadFile();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

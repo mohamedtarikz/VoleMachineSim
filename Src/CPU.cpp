@@ -1,7 +1,15 @@
 #include "VoleMachineSim.h"
 
-CPU::CPU() {
+CPU::CPU() : reg() {
     PC = 0;
+}
+
+string CPU::getIR() {
+    return IR;
+}
+
+int CPU::getPC() {
+    return PC;
 }
 
 void CPU::fetch(Memory& mem) {
@@ -51,7 +59,7 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         cu.jump(instruction[1], instruction[2], reg, PC);
     }
     else if(instruction[0] == 12){
-        cu.halt(reg);
+        cu.halt(reg,mem);
     }
 }
 

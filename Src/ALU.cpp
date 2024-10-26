@@ -107,6 +107,9 @@ string ALU::decToHex(int dec) {
         }
         dec /= 16;
     }
+    while(ret.size() < 2){
+        ret += '0';
+    }
     reverse(ret.begin(), ret.end());
     return ret;
 }

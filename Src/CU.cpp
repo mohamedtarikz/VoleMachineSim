@@ -28,8 +28,8 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
     PC = idxMemory;
 }
 
-void CU::halt(Register& reg) {
-    MainUI::outputState(reg);
+void CU::halt(Register& reg, Memory& mem) {
+    MainUI::outputState(reg, mem);
     this_thread::sleep_for(chrono::seconds(8));
     exit(0);
 }
