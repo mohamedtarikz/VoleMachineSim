@@ -1,4 +1,5 @@
 #include "VoleMachineSim.h"
+#include <algorithm>
 
 Memory::Memory(){
     int i = 0;
@@ -14,6 +15,7 @@ Memory::Memory(fstream& file){
     while(i < 256 && file >> byte){
         if(byte.size() != 4)
             throw invalid_argument("Invalid byte size");
+        transform(byte.begin(), byte.end(), byte.begin(), ::toupper);
         string tmp;
         tmp += byte[0];
         tmp += byte[1];
@@ -47,6 +49,7 @@ void Memory::loadMemory(fstream &file) {
     while(i < 256 && file >> byte){
         if(byte.size() != 4)
             throw invalid_argument("Invalid byte size");
+        transform(byte.begin(), byte.end(), byte.begin(), ::toupper);
         string tmp;
         tmp += byte[0];
         tmp += byte[1];
