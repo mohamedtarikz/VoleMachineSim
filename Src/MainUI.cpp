@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iomanip>
 
+// Function to get user input choice with validation
 int GetInputChoice(const string& prompt, int gratest_choice) {
     int input;
     string line;
@@ -25,6 +26,7 @@ int GetInputChoice(const string& prompt, int gratest_choice) {
     }
 }
 
+// Function to get the file name from the user
 string getFileName() {
     cout << "Please enter the file name including extension if it's in the same directory, or enter the absolute path: ";
     string file_name;
@@ -32,6 +34,7 @@ string getFileName() {
     return file_name;
 }
 
+// Method to load a file
 fstream MainUI::LoadFile() {
     string Filename;
     fstream programFile(Filename, ios::in);
@@ -47,7 +50,8 @@ fstream MainUI::LoadFile() {
     return programFile;
 }
 
-vector<string> MainUI::loadinstruction() {
+// Method to load instructions manually
+vector<string> MainUI::loadInstruction() {
     vector<string> instructions;
     string instruction;
     int counter = 0;
@@ -68,6 +72,7 @@ vector<string> MainUI::loadinstruction() {
     return instructions;
 }
 
+// Static method to output the state of the register and memory
 void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
     cout << "Current state of Registers and Memory:" << endl;
     cout <<"Registers" << setw(2) << "|" << "Memory" << endl;
@@ -78,30 +83,32 @@ void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
         }
         cout << endl;
     }
-};
+}
 
+// Method to handle the output choice
 void MainUI::handleChoiceOutput(int choice, Machine& machine) {
     switch (choice) {
-    case 1:
-        while (machine.getCPU().getPC() < 256) {
+        case 1:
+            while (machine.getCPU().getPC() < 256) {
+                machine.getCPU().runNextStep(machine.getMemory());
+            }
+            break;
+        case 2:
             machine.getCPU().runNextStep(machine.getMemory());
-        }
-        break;
-    case 2:
-        machine.getCPU().runNextStep(machine.getMemory());
-        break;
-    case 3:
-        outputState(machine.getRegister(), machine.getMemory());
-        break;
-    case 4:
-        exit(0);
-    default:
-        cout << "Invalid choice. Please try again." << endl;
-        break;
+            break;
+        case 3:
+            outputState(machine.getRegister(), machine.getMemory());
+            break;
+        case 4:
+            exit(0);
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+            break;
     }
-};
+}
 
-int MainUI::DisplayOuputMenu(Machine& machine) {
+// Method to display the output menu
+int MainUI::DisplayOutputMenu(Machine& machine) {
     while(machine.getCPU().getPC() < 256){
         cout << "1- Play all Instructions." << endl;
         cout << "2- Play one step." << endl;
@@ -111,19 +118,20 @@ int MainUI::DisplayOuputMenu(Machine& machine) {
         choice = GetInputChoice("Please Enter your Choice: ", 4);
         handleChoiceOutput(choice, machine);
     }
-};
+}
 
+// Method to handle the operation choice
 void MainUI::handleChoiceOperation(int choice, Machine& machine) {
     if (choice == 1) {
         fstream file;
         file = LoadFile();
         machine.getMemory().loadMemory(file);
-        DisplayOuputMenu(machine);
+        DisplayOutputMenu(machine);
         return;
     } else if (choice == 2) {
-        vector<string> instructions = loadinstruction();
+        vector<string> instructions = loadInstruction();
         machine.getMemory().loadMemory(instructions);
-        DisplayOuputMenu(machine);
+        DisplayOutputMenu(machine);
         return;
     }else if(choice == 3){
         exit(0);
@@ -131,8 +139,9 @@ void MainUI::handleChoiceOperation(int choice, Machine& machine) {
         cout << "Invalid choice. Please try again." << endl;
         return;
     }
-};
+}
 
+// Method to display the operation menu
 int MainUI::DisplayOperationMenu(Machine& machine) {
     while (true) {
         cout << "1- Operation using a file." << endl;
@@ -143,4 +152,4 @@ int MainUI::DisplayOperationMenu(Machine& machine) {
         handleChoiceOperation(choice, machine);
     }
     return choice;
-};
+}

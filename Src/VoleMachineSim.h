@@ -106,29 +106,42 @@ public:
     void runNextStep(Memory&);
 };
 
-// VoleMachineSim class
+// Class to represent the machine with memory and CPU
 class Machine {
-    Memory mem;
-    CPU cpu;
+    Memory mem; // Memory object to handle memory operations
+    CPU cpu; // CPU object to handle instruction execution
 public:
+    // Default constructor
     Machine();
+    // Constructor to initialize machine with memory from a file
     Machine(fstream&);
+    // Constructor to initialize machine with memory from a vector of instructions
     Machine(vector<string>);
+    // Method to get the CPU object
     CPU& getCPU();
+    // Method to get the Register object
     Register& getRegister();
+    // Method to get the Memory object
     Memory& getMemory();
 };
 
-class MainUI{
-    int choice;
+// Class to handle the main user interface
+class MainUI {
+    int choice; // Variable to store user choice
 public:
-    int DisplayOuputMenu(Machine& machine);
+    // Method to display the output menu
+    int DisplayOutputMenu(Machine& machine);
+    // Method to display the operation menu
     int DisplayOperationMenu(Machine& machine);
-    int getchoice(int choicese_size);
-    vector<string> loadinstruction();
+    // Method to load instructions manually
+    vector<string> loadInstruction();
+    // Method to handle the output choice
     void handleChoiceOutput(int choice, Machine& machine);
+    // Method to handle the operation choice
     void handleChoiceOperation(int choice, Machine& machine);
+    // Static method to output the state of the register and memory
     static void outputState(Register& mainRegister, Memory& mainMemory);
+    // Method to load a file
     fstream LoadFile();
 };
 

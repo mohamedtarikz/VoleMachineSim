@@ -2,15 +2,16 @@
 #include <regex>
 #include <valarray>
 
+// Convert a decimal number to its floating-point binary representation
 string ALU::cnvrtToFloatingPoint(double dec) {
-    char sign = '0';
+    char sign = '0'; // Determine the sign bit
     if(dec < 0){
         sign = '1';
         dec *= -1;
     }
-    int intPart = (int)dec;
-    double fracPart = dec - intPart;
-    string intPartBin = decToBin(intPart);
+    int intPart = (int)dec; // Extract the integer part
+    double fracPart = dec - intPart; // Extract the fractional part
+    string intPartBin = decToBin(intPart); // Convert integer part to binary
     string fracPartBin;
     while(fracPart > 0){
         fracPart *= 2;
@@ -22,7 +23,7 @@ string ALU::cnvrtToFloatingPoint(double dec) {
             fracPartBin += '0';
         }
     }
-    string all = intPartBin + fracPartBin;
+    string all = intPartBin + fracPartBin; // Combine integer and fractional parts
     while(all.size() < 8){
         all += '0';
     }
@@ -30,11 +31,12 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     while(all[idx] == '0'){
         idx++;
     }
-    int exp = intPartBin.size() - idx + 3;
-    string mant = all.substr(idx + 1, 4);
-    return sign + decToBin(exp, 3) + mant;
+    int exp = intPartBin.size() - idx + 3; // Calculate the exponent
+    string mant = all.substr(idx + 1, 4); // Extract the mantissa
+    return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
 
+// Convert a binary string to its two's complement integer representation
 int ALU::cnvrtTwosComplement(string bin) {
     int ret = 0;
     for(int i = 0; i < bin.size(); ++i){
@@ -48,6 +50,7 @@ int ALU::cnvrtTwosComplement(string bin) {
     return ret;
 }
 
+// Convert a binary string to its decimal representation
 int ALU::binToDec(string bin) {
     int ret = 0;
     int idx = bin.size() - 1;
@@ -58,6 +61,7 @@ int ALU::binToDec(string bin) {
     return ret;
 }
 
+// Convert a decimal number to its binary representation with a specified size
 string ALU::decToBin(int dec, int size) {
     string ret;
     while(dec > 0){
@@ -71,6 +75,7 @@ string ALU::decToBin(int dec, int size) {
     return ret;
 }
 
+// Validate if a given hexadecimal string represents a valid instruction
 bool ALU::isValid(string hex) {
     bool valid = false;
     if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex [0] == 'B'){
@@ -85,6 +90,7 @@ bool ALU::isValid(string hex) {
     return valid;
 }
 
+// Convert a hexadecimal string to its decimal representation
 int ALU::hexToDec(string hex) {
     int ret = 0;
     int idx = hex.size() - 1;
@@ -95,6 +101,7 @@ int ALU::hexToDec(string hex) {
     return ret;
 }
 
+// Convert a decimal number to its hexadecimal representation
 string ALU::decToHex(int dec) {
     string ret;
     while(dec > 0){
@@ -114,6 +121,7 @@ string ALU::decToHex(int dec) {
     return ret;
 }
 
+// Sum two floating-point numbers and store the result in a register
 void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
     string s1 = decToBin(reg.getCell(idxRegister2));
     string s2 = decToBin(reg.getCell(idxRegister3));
@@ -138,16 +146,29 @@ void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3,
         if(s2[0] == '1')
             ans *= -1;
     }
+    if(ans > 31){
+        throw invalid_argument("Overflow");
+    }
+    else if(ans < -31){
+        throw invalid_argument("Underflow");
+    }
     string s = cnvrtToFloatingPoint(ans);
     reg.setCell(idxRegister1, binToDec(s));
 }
 
+// Sum two two's complement numbers and store the result in a register
 void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register &reg) {
     string a = decToBin(reg.getCell(idxRegister2), 8);
     string b = decToBin(reg.getCell(idxRegister3), 8);
     int x = cnvrtTwosComplement(a);
     int y = cnvrtTwosComplement(b);
     int z = x + y;
+    if(z > 127){
+        throw invalid_argument("Overflow");
+    }
+    else if(z < -128){
+        throw invalid_argument("Underflow");
+    }
     if(z < 0){
         string s = decToBin(-z, 8);
         for(int i = 0; s[i] != '1' && i < s.size(); ++i){
@@ -158,6 +179,7 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     reg.setCell(idxRegister1, z);
 }
 
+// Add two numbers and store the result in a register
 void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
     reg.setCell(idxRegister1, reg.getCell(idxRegister2) + reg.getCell(idxRegister3));
 }
