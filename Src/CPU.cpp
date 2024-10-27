@@ -1,4 +1,5 @@
 #include "VoleMachineSim.h"
+#include <iostream>
 
 // Constructor to initialize the CPU
 CPU::CPU() : reg() {
@@ -17,6 +18,10 @@ int CPU::getPC() {
 
 // Method to fetch the next instruction from memory
 void CPU::fetch(Memory& mem) {
+    if(PC >= 255) { // Check if the program counter has reached the end
+        cout<<"Program Counter has reached the end."<<endl;
+        cu.halt(reg, mem, PC, IR); // Halt the execution
+    }
     // Fetch two consecutive memory cells and concatenate them to form the instruction
     IR = mem.getCell(PC) + mem.getCell(PC+1);
     PC += 2; // Increment the program counter by 2
@@ -61,12 +66,16 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
     } else if(instruction[0] == 11) {
         cu.jump(instruction[1], instruction[2], reg, PC);
     } else if(instruction[0] == 12) {
-        cu.halt(reg, mem);
+        cu.halt(reg, mem, PC, IR);
     }
 }
 
 // Method to run the next step of the program
 void CPU::runNextStep(Memory& mem) {
+    if(PC >= 255) {// Check if the program counter has reached the end
+        cout<<"Program Counter has reached the end."<<endl;
+        cu.halt(reg, mem, PC, IR); // Halt the execution
+    }
     fetch(mem); // Fetch the next instruction
     if(alu.isValid(IR)) { // Check if the instruction is valid
         vector<int> instruction = decode(); // Decode the instruction

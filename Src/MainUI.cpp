@@ -9,7 +9,8 @@ int GetInputChoice(const string& prompt, int gratest_choice) {
     string line;
     while (true) {
         cout << prompt;
-        if (getline(cin, line) && !line.empty()) {
+        getline(cin, line);
+        if (!line.empty()) {
             try {
                 input = stoi(line);
                 if (input > gratest_choice) {
@@ -17,7 +18,7 @@ int GetInputChoice(const string& prompt, int gratest_choice) {
                 } else {
                     return input;
                 }
-            } catch (const invalid_argument&) {
+            } catch (invalid_argument& e) {
                 cout << "Invalid input. Please enter a number." << endl;
             }
         } else {
@@ -73,7 +74,7 @@ vector<string> MainUI::loadInstruction() {
 }
 
 // Static method to output the state of the register and memory
-void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
+void MainUI::outputState(Register& mainRegister, Memory& mainMemory, int PC, string IR) {
     cout << "Current state of Registers and Memory:" << endl;
     cout <<"Registers" << setw(2) << "|" << "Memory" << endl;
     for (int i = 0; i < 16; ++i) {
@@ -83,13 +84,15 @@ void MainUI::outputState(Register& mainRegister, Memory& mainMemory) {
         }
         cout << endl;
     }
+    cout<<"PC: " << PC << endl;
+    cout<<"IR: " << IR << endl;
 }
 
 // Method to handle the output choice
 void MainUI::handleChoiceOutput(int choice, Machine& machine) {
     switch (choice) {
         case 1:
-            while (machine.getCPU().getPC() < 256) {
+            while (true) {
                 machine.getCPU().runNextStep(machine.getMemory());
             }
             break;
@@ -97,7 +100,7 @@ void MainUI::handleChoiceOutput(int choice, Machine& machine) {
             machine.getCPU().runNextStep(machine.getMemory());
             break;
         case 3:
-            outputState(machine.getRegister(), machine.getMemory());
+            outputState(machine.getRegister(), machine.getMemory(), machine.getCPU().getPC(), machine.getCPU().getIR());
             break;
         case 4:
             exit(0);
@@ -109,12 +112,11 @@ void MainUI::handleChoiceOutput(int choice, Machine& machine) {
 
 // Method to display the output menu
 int MainUI::DisplayOutputMenu(Machine& machine) {
-    while(machine.getCPU().getPC() < 256){
+    while(machine.getCPU().getPC() < 255){
         cout << "1- Play all Instructions." << endl;
         cout << "2- Play one step." << endl;
         cout << "3- Show state." << endl;
         cout << "4- Exit." << endl;
-        cout << "Please enter a choice: ";
         choice = GetInputChoice("Please Enter your Choice: ", 4);
         handleChoiceOutput(choice, machine);
     }
@@ -147,7 +149,6 @@ int MainUI::DisplayOperationMenu(Machine& machine) {
         cout << "1- Operation using a file." << endl;
         cout << "2- Manual input operation." << endl;
         cout << "3- Exit." << endl;
-        cout << "Please enter a choice: ";
         choice = GetInputChoice("Please Enter your Choice: ", 3);
         handleChoiceOperation(choice, machine);
     }

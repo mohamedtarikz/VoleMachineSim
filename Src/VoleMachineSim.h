@@ -9,7 +9,7 @@ using namespace std;
 
 // Memory class
 class Memory {
-    string memory[256]; // Array to store memory cells
+    string memory[300]; // Array to store memory cells
     int size = 256; // Size of the memory
 public:
     // Constructor to initialize memory with zeros
@@ -79,7 +79,7 @@ public:
     // Method to jump to a memory location
     void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
-    void halt(Register& reg, Memory& mem);
+    void halt(Register& reg, Memory& mem, int PC, string IR);
 };
 
 // CPU class to handle the execution of instructions
@@ -140,7 +140,7 @@ public:
     // Method to handle the operation choice
     void handleChoiceOperation(int choice, Machine& machine);
     // Static method to output the state of the register and memory
-    static void outputState(Register& mainRegister, Memory& mainMemory);
+    static void outputState(Register& mainRegister, Memory& mainMemory, int PC, string IR);
     // Method to load a file
     fstream LoadFile();
 };

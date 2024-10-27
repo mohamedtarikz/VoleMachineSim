@@ -4,7 +4,7 @@
 // Default constructor to initialize memory with "00"
 Memory::Memory(){
     int i = 0;
-    while(i < 256){
+    while(i < 300){
         memory[i] = "00"; // Initialize each memory cell to "00"
         i++;
     }

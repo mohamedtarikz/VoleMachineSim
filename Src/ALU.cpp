@@ -95,7 +95,12 @@ int ALU::hexToDec(string hex) {
     int ret = 0;
     int idx = hex.size() - 1;
     for (int i = 0; i < hex.size(); ++i) {
-        ret += (hex[i] - '0') * pow(16, idx);
+        if(hex[i] >= 'A' && hex[i] <= 'F'){
+            ret += (hex[i] - 'A' + 10) * pow(16, idx);
+        }
+        else {
+            ret += (hex[i] - '0') * pow(16, idx);
+        }
         idx--;
     }
     return ret;
