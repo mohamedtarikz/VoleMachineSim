@@ -15,8 +15,7 @@ Memory::Memory(fstream& file){
     string byte;
     int i = 0;
     while(i < 256 && file >> byte){
-        if(byte.size() != 4)
-            throw invalid_argument("Invalid byte size"); // Ensure each byte is of size 4
+        assert(byte.size() == 4); // Ensure each byte is of size 4
         transform(byte.begin(), byte.end(), byte.begin(), ::toupper); // Convert to uppercase
         string tmp;
         tmp += byte[0];
@@ -33,8 +32,7 @@ Memory::Memory(fstream& file){
 // Constructor to initialize memory from a vector of instructions
 Memory::Memory(vector<string> instructions){
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
-        if(instructions[i].size() != 4)
-            throw invalid_argument("Invalid byte size"); // Ensure each instruction is of size 4
+        assert(instructions[i].size() == 4); // Ensure each instruction is of size 4
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
@@ -51,8 +49,7 @@ void Memory::loadMemory(fstream &file) {
     string byte;
     int i = 0;
     while(i < 256 && file >> byte){
-        if(byte.size() != 4)
-            throw invalid_argument("Invalid byte size"); // Ensure each byte is of size 4
+        assert(byte.size() == 4); // Ensure each byte is of size 4
         transform(byte.begin(), byte.end(), byte.begin(), ::toupper); // Convert to uppercase
         string tmp;
         tmp += byte[0];
@@ -69,8 +66,7 @@ void Memory::loadMemory(fstream &file) {
 // Method to load memory from a vector of instructions
 void Memory::loadMemory(vector<string> instructions) {
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
-        if(instructions[i].size() != 4)
-            throw invalid_argument("Invalid byte size"); // Ensure each instruction is of size 4
+        assert(instructions[i].size() == 4); // Ensure each instruction is of size 4
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
@@ -84,8 +80,7 @@ void Memory::loadMemory(vector<string> instructions) {
 
 // Method to set a memory cell value
 void Memory::setCell(int index, string value){
-    if(value.size() != 2)
-        throw invalid_argument("Invalid byte size"); // Ensure the value is of size 2
+    assert(value.size() == 2); // Ensure the value is of size 2
     assert(index >= 0 && index < size); // Ensure the index is within bounds
     memory[index] = value; // Set the memory cell value
 }

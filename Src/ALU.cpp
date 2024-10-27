@@ -146,12 +146,7 @@ void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3,
         if(s2[0] == '1')
             ans *= -1;
     }
-    if(ans > 31){
-        throw invalid_argument("Overflow");
-    }
-    else if(ans < -31){
-        throw invalid_argument("Underflow");
-    }
+    assert(ans >= -31 && ans <= 31);
     string s = cnvrtToFloatingPoint(ans);
     reg.setCell(idxRegister1, binToDec(s));
 }
@@ -163,12 +158,7 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     int x = cnvrtTwosComplement(a);
     int y = cnvrtTwosComplement(b);
     int z = x + y;
-    if(z > 127){
-        throw invalid_argument("Overflow");
-    }
-    else if(z < -128){
-        throw invalid_argument("Underflow");
-    }
+    assert(z >= -128 && z <= 127);
     if(z < 0){
         string s = decToBin(-z, 8);
         for(int i = 0; s[i] != '1' && i < s.size(); ++i){
