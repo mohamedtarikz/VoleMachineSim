@@ -14,8 +14,14 @@ Memory::Memory(fstream& file){
     while(i < 256 && file >> byte){
         if(byte.size() != 4)
             throw invalid_argument("Invalid byte size");
-        memory[i] = byte[0] + byte[1];
-        memory[i+1] = byte[2] + byte[3];
+        string tmp;
+        tmp += byte[0];
+        tmp += byte[1];
+        memory[i] = tmp;
+        tmp = "";
+        tmp += byte[2];
+        tmp += byte[3];
+        memory[i+1] = tmp;
         i+=2;
     }
 }
@@ -41,8 +47,14 @@ void Memory::loadMemory(fstream &file) {
     while(i < 256 && file >> byte){
         if(byte.size() != 4)
             throw invalid_argument("Invalid byte size");
-        memory[i] = byte[0] + byte[1];
-        memory[i+1] = byte[2] + byte[3];
+        string tmp;
+        tmp += byte[0];
+        tmp += byte[1];
+        memory[i] = tmp;
+        tmp = "";
+        tmp += byte[2];
+        tmp += byte[3];
+        memory[i+1] = tmp;
         i+=2;
     }
 }
