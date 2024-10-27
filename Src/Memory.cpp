@@ -24,8 +24,14 @@ Memory::Memory(vector<string> instructions){
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
         if(instructions[i].size() != 4)
             throw invalid_argument("Invalid byte size");
-        memory[i] = instructions[i][0] + instructions[i][1];
-        memory[i+1] = instructions[i][2] + instructions[i][3];
+        string tmp;
+        tmp += instructions[i][0];
+        tmp += instructions[i][1];
+        memory[i*2] = tmp;
+        tmp = "";
+        tmp += instructions[i][2];
+        tmp += instructions[i][3];
+        memory[i*2+1] = tmp;
     }
 }
 
