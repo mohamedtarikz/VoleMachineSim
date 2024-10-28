@@ -32,6 +32,7 @@ string ALU::cnvrtToFloatingPoint(double dec) {
         idx++;
     }
     int exp = intPartBin.size() - idx + 2; // Calculate the exponent
+    assert(exp >= 0 && exp <= 7);
     string mant = all.substr(idx + 1, 4); // Extract the mantissa
     return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
