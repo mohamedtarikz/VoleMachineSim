@@ -32,7 +32,9 @@ string ALU::cnvrtToFloatingPoint(double dec) {
         idx++;
     }
     int exp = intPartBin.size() - idx + 2; // Calculate the exponent
-    assert(exp >= 0 && exp <= 7);
+    if(!(exp >= 0 && exp <= 7)){
+        throw runtime_error("Floating point overflow");
+    }
     string mant = all.substr(idx + 1, 4); // Extract the mantissa
     return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
@@ -144,7 +146,9 @@ void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3,
         exp1--;
     }
     double ans = mant1 * pow(2, exp1) * pow(-1, s1[0] - '0') + mant2 * pow(2, exp2) * pow(-1, s2[0] - '0');
-    assert(ans >= -31 && ans <= 31);
+    if(!(ans >= -31 && ans <= 31)){
+        throw runtime_error("Floating point overflow");
+    }
     string s = cnvrtToFloatingPoint(ans);
     reg.setCell(idxRegister1, binToDec(s));
 }
@@ -156,7 +160,9 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     int x = cnvrtTwosComplement(a);
     int y = cnvrtTwosComplement(b);
     int z = x + y;
-    assert(z >= -128 && z <= 127);
+    if(!(z >= -128 && z <= 127)){
+        throw runtime_error("Two's complement overflow");
+    }
     if(z < 0){
         string s = decToBin(-z, 8);
         for(int i = 0; s[i] != '1' && i < s.size(); ++i){

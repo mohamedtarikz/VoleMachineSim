@@ -77,9 +77,14 @@ void CPU::runNextStep(Memory& mem) {
         cu.halt(reg, mem, PC, IR); // Halt the execution
     }
     fetch(mem); // Fetch the next instruction
-    if(alu.isValid(IR)) { // Check if the instruction is valid
-        vector<int> instruction = decode(); // Decode the instruction
-        execute(reg, mem, instruction); // Execute the instruction
+    if(alu.isValid(IR)) {// Check if the instruction is valid
+        try {
+            vector<int> instruction = decode(); // Decode the instruction
+            execute(reg, mem, instruction); // Execute the instruction
+        }
+        catch (exception& e) {
+            cerr << "An error occurred: " << e.what() << endl;
+        }
     }
 }
 

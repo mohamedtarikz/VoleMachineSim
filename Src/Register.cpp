@@ -7,11 +7,15 @@ Register::Register() {
 }
 
 int Register::getCell(int index) {
-    assert(index >= 0 && index < size);
+    if(!(index >= 0 && index < size)){
+        throw runtime_error("Index out of range");
+    }
     return memory[index];
 }
 
 void Register::setCell(int index, int value) {
-    assert(index >= 0 && index < size);
+    if(!(index >= 0 && index < size)){
+        throw runtime_error("Index out of range");
+    }
     memory[index] = value;
 }

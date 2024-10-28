@@ -1,5 +1,6 @@
 #include "VoleMachineSim.h"
 #include <algorithm>
+#include <iostream>
 
 // Default constructor to initialize memory with "00"
 Memory::Memory(){
@@ -15,7 +16,10 @@ Memory::Memory(fstream& file){
     string byte;
     int i = 0;
     while(i < 256 && file >> byte){
-        assert(byte.size() == 4); // Ensure each byte is of size 4
+        if(byte.size() != 4){
+            cout << "Invalid instruction: " << byte << endl;
+            continue;
+        } // Ensure each byte is of size 4
         transform(byte.begin(), byte.end(), byte.begin(), ::toupper); // Convert to uppercase
         string tmp;
         tmp += byte[0];
@@ -32,7 +36,10 @@ Memory::Memory(fstream& file){
 // Constructor to initialize memory from a vector of instructions
 Memory::Memory(vector<string> instructions){
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
-        assert(instructions[i].size() == 4); // Ensure each instruction is of size 4
+        if(instructions[i].size() != 4){
+            cout << "Invalid instruction: " << instructions[i] << endl;
+            continue;
+        } // Ensure each instruction is of size 4
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
@@ -49,7 +56,10 @@ void Memory::loadMemory(fstream &file) {
     string byte;
     int i = 0;
     while(i < 256 && file >> byte){
-        assert(byte.size() == 4); // Ensure each byte is of size 4
+        if(byte.size() != 4){
+            cout << "Invalid instruction: " << byte << endl;
+            continue;
+        } // Ensure each byte is of size 4
         transform(byte.begin(), byte.end(), byte.begin(), ::toupper); // Convert to uppercase
         string tmp;
         tmp += byte[0];
@@ -66,7 +76,10 @@ void Memory::loadMemory(fstream &file) {
 // Method to load memory from a vector of instructions
 void Memory::loadMemory(vector<string> instructions) {
     for(int i = 0; i < (size/2) && i < instructions.size(); i++){
-        assert(instructions[i].size() == 4); // Ensure each instruction is of size 4
+        if(instructions[i].size() != 4){
+            cout << "Invalid instruction: " << instructions[i] << endl;
+            continue;
+        } // Ensure each instruction is of size 4
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
@@ -80,8 +93,12 @@ void Memory::loadMemory(vector<string> instructions) {
 
 // Method to set a memory cell value
 void Memory::setCell(int index, string value){
-    assert(value.size() == 2); // Ensure the value is of size 2
-    assert(index >= 0 && index < size); // Ensure the index is within bounds
+    if(value.size() != 2){
+        throw runtime_error("Invalid value size");
+    } // Ensure the value is of size 2
+    if(!(index >= 0 && index < size)){
+        throw runtime_error("Invalid memory index");
+    } // Ensure the index is within bounds
     memory[index] = value; // Set the memory cell value
 }
 
