@@ -11,7 +11,7 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     }
     int intPart = (int)dec; // Extract the integer part
     double fracPart = dec - intPart; // Extract the fractional part
-    string intPartBin = decToBin(intPart); // Convert integer part to binary
+    string intPartBin = decToBin(intPart,0); // Convert integer part to binary
     string fracPartBin;
     while(fracPart > 0){
         fracPart *= 2;
@@ -28,10 +28,10 @@ string ALU::cnvrtToFloatingPoint(double dec) {
         all += '0';
     }
     int idx = 0;
-    while(all[idx] == '0'){
+    while(all[idx] == '0' && idx < all.size()){
         idx++;
     }
-    int exp = intPartBin.size() - idx + 3; // Calculate the exponent
+    int exp = intPartBin.size() - idx + 2; // Calculate the exponent
     string mant = all.substr(idx + 1, 4); // Extract the mantissa
     return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
@@ -142,15 +142,7 @@ void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3,
         mant1 *= 2;
         exp1--;
     }
-    double ans = (mant1 + mant2) * pow(2, exp1);
-    if(mant1 > mant2){
-        if(s1[0] == '1')
-            ans *= -1;
-    }
-    else{
-        if(s2[0] == '1')
-            ans *= -1;
-    }
+    double ans = mant1 * pow(2, exp1) * pow(-1, s1[0] - '0') + mant2 * pow(2, exp2) * pow(-1, s2[0] - '0');
     assert(ans >= -31 && ans <= 31);
     string s = cnvrtToFloatingPoint(ans);
     reg.setCell(idxRegister1, binToDec(s));
