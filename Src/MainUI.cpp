@@ -76,7 +76,7 @@ vector<string> MainUI::loadInstruction() {
 // Static method to output the state of the register and memory
 void MainUI::outputState(Register& mainRegister, Memory& mainMemory, int PC, string IR) {
     cout << "Current state of Registers and Memory:" << endl;
-    cout <<"Registers" << setw(2) << "|" << "Memory" << endl;
+    cout <<"Registers" << setw(3) << "|" << "Memory" << endl;
     for (int i = 0; i < 16; ++i) {
         cout <<ALU::decToHex(mainRegister.getCell(i)) << setw(10) << "|";
         for (int j = 0; j < 16; j++) {
@@ -120,6 +120,7 @@ int MainUI::DisplayOutputMenu(Machine& machine) {
         choice = GetInputChoice("Please Enter your Choice: ", 4);
         handleChoiceOutput(choice, machine);
     }
+    return choice;
 }
 
 // Method to handle the operation choice
