@@ -1,0 +1,4 @@
+#ifndef VOLEMACHINE_H
+#define VOLEMACHINE_H
+
+#endif // VOLEMACHINE_H
