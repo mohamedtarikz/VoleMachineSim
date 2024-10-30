@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onTextChanged(int index);
+
 private:
     Ui::MainWindow *ui;
+    QLineEdit* textboxes[4];
 };
 #endif // MAINWINDOW_H

@@ -36,7 +36,6 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
 
 // Halt the execution and output the state of registers and memory
 void CU::halt(Register& reg, Memory& mem, int PC, string IR) {
-    MainUI::outputState(reg, mem, PC, IR);
     std::this_thread::sleep_for(std::chrono::seconds(8));
     exit(0);
 }
