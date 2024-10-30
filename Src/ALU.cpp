@@ -31,7 +31,7 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     while(all[idx] == '0' && idx < all.size()){
         idx++;
     }
-    int exp = intPartBin.size() - idx + 2; // Calculate the exponent
+    int exp = intPartBin.size() - idx + 3; // Calculate the exponent
     if(!(exp >= 0 && exp <= 7)){
         throw runtime_error("Floating point overflow");
     }
