@@ -1,2 +1,2 @@
-# VoleMachineSim
+# Machine
 Assignment for OOP course
