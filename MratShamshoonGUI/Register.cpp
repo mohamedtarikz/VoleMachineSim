@@ -21,3 +21,9 @@ void Register::setCell(int index, int value) {
 
     emit registerUpdated();
 }
+void Register::clear(){
+    for(int i = 0 ; i <size ; i++ ){
+        memory[i] = 0;
+    }
+    emit registerUpdated();
+}

@@ -67,7 +67,9 @@ color: #ffffff;</string>
 
 font: 500 9pt &quot;Glass TTY VT220&quot;;
 
-border: 2px solid #ffffff;</string>
+border: 2px solid #ffffff;
+
+color:#ffffff;</string>
          </property>
          <property name="text">
           <string/>
@@ -289,7 +291,7 @@ QPushButton:hover .text {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="Clear">
            <property name="maximumSize">
             <size>
              <width>185</width>

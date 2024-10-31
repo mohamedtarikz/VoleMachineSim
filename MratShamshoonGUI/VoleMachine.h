@@ -23,6 +23,7 @@ public:
     void setCell(int index, string value);
     // Method to get a value from a memory cell
     string getCell(int index);
+    void clear();
 signals:
     void MemoryUpdated();
 };
@@ -40,6 +41,8 @@ public:
     void setCell(int index, int value);
     // Method to get a value from a register cell
     int getCell(int index);
+
+    void clear();
 signals:
     void registerUpdated();
 };
@@ -90,8 +93,9 @@ signals:
     void toPrint();
 };
 
+
 // CPU class to handle the execution of instructions
-class CPU : public QWidget{
+class CPU : public QWidget {
     Q_OBJECT
 
     int PC; // Program Counter to keep track of the current instruction
@@ -114,8 +118,10 @@ public:
     Register& getRegister();
     // Method to run the next step of the program
     void runNextStep(Memory&);
+    void clear();
 signals:
     void printUpdate(string str);
+    void CPUupdated();
 };
 
 // Class to represent the machine with memory and CPU
@@ -131,6 +137,8 @@ public:
     Register& getRegister();
     // Method to get the Memory object
     Memory& getMemory();
+
+    void clear();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

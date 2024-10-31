@@ -13,6 +13,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignLeft);
     ui->screenWindow->setAlignment(Qt::AlignCenter);
+    ui->VariablesWindow->setAlignment(Qt::AlignLeft);
 
     textboxes[0] = &(*(ui->InputA));
     textboxes[1] = &(*(ui->InputB));
@@ -27,14 +28,17 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     printRegister(machine->getRegister());
     printMemory(machine->getMemory());
     printToScreen("Screen");
+    printPCIR(machine->getCPU());
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->LoadFileButton, &QPushButton::clicked, this, [=](){loadFile();});
     connect(&(machine->getRegister()), &Register::registerUpdated, this, [=](){printRegister(machine->getRegister());});
     connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](){printMemory(machine->getMemory());});
+    connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());});
     connect(ui->StepOverButton, &QPushButton::clicked, this, [=](){machine->getCPU().runNextStep(machine->getMemory());});
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str){printToScreen(str);});
+    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0 ;});
 }
 
 MainWindow::~MainWindow()
@@ -118,18 +122,23 @@ void MainWindow::printRegister(Register& reg){
     ui->registerWindow->setText(QString::fromStdString(output));
 }
 void MainWindow::printMemory(Memory& memo){
-    string output = "Memory\n";
+    string output = "Memory";
     for(int i = 0; i < 16;i++){
-        output += "0x" + ALU::decToHex(i) + " ";
+        output += "  0x" + ALU::decToHex(i) + " ";
     }
     output += "\n";
     for(int i = 0 ;i <16 ;i++){
         output+= "0x" + ALU::decToHex(i) + " ";
         for(int j = 0 ; j < 16 ; j++){
-            output += memo.getCell(i * 16 + j) +  " ";
+            output += memo.getCell(i * 16 + j) +  "      ";
         }
         output += "\n";
     }
     ui->memoryWindow->setText(QString::fromStdString(output));
 }
+void MainWindow::printPCIR(CPU& cp){
+    string output = "PC: " + to_string(cp.getPC());
+    output += "\nIR: " + cp.getIR();
 
+    ui->VariablesWindow->setText(QString::fromStdString(output));
+}

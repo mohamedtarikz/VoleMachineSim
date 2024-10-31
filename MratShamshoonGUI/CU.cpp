@@ -1,5 +1,4 @@
 #include "VoleMachine.h"
-#include <thread>
 
 // Load a value from memory into a register
 void CU::load(int idxRegister, int idxMemory, Register &reg, Memory &mem) {
@@ -36,6 +35,5 @@ void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
 
 // Halt the execution and output the state of registers and memory
 void CU::halt(Register& reg, Memory& mem, int PC, string IR) {
-    std::this_thread::sleep_for(std::chrono::seconds(8));
-    exit(0);
+
 }

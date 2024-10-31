@@ -27,6 +27,7 @@ private slots:
     void printToScreen(string);
     void printRegister(Register& reg);
     void printMemory(Memory & mem);
+    void printPCIR(CPU& cp);
 
 private:
     Ui::MainWindow *ui;
