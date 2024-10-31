@@ -24,6 +24,8 @@ private slots:
     void onTextChanged(int index);
     void addInstruction(QString instruction);
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLineEdit* textboxes[4];

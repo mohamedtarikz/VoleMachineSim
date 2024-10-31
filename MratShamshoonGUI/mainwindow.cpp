@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent, Machine* p_machine)
     : QMainWindow(parent), machine(p_machine)
@@ -65,3 +66,31 @@ void MainWindow::addInstruction(QString instruction){
         }
     }
 }
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    // Open the file dialog
+    QString filePath = QFileDialog::getOpenFileName(this, "Open File", "", "All Files (*)");
+
+    if (!filePath.isEmpty()) {
+
+        // Convert QString to std::string for ifstream
+        string filePathStr = filePath.toStdString();
+
+        // Open the file using std::ifstream
+        fstream file(filePathStr, ios::in);
+        if (!file.is_open()) {
+            throw invalid_argument("invalid file");
+        }
+        else{
+            string outPath = "File Path: " + filePathStr;
+            QString out = QString::fromStdString(outPath);
+            ui->label_7->setText(out);
+            machine->getMemory().loadMemory(file);
+        }
+        file.close();
+    }
+}
+
+
