@@ -26,6 +26,7 @@ private slots:
     void loadFile();
     void printRegister(Register& reg);
     void printMemory(Memory & mem);
+    void printPCIR(CPU& cp);
 
 private:
     Ui::MainWindow *ui;

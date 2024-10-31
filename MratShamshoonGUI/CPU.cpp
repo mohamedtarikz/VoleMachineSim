@@ -9,11 +9,13 @@ CPU::CPU() : reg() {
 // Method to get the current instruction register value
 string CPU::getIR() {
     return IR;
+
 }
 
 // Method to get the current program counter value
 int CPU::getPC() {
     return PC;
+
 }
 
 // Method to fetch the next instruction from memory
@@ -25,6 +27,8 @@ void CPU::fetch(Memory& mem) {
     // Fetch two consecutive memory cells and concatenate them to form the instruction
     IR = mem.getCell(PC) + mem.getCell(PC+1);
     PC += 2; // Increment the program counter by 2
+
+    emit CPUupdated();
 }
 
 // Method to decode the fetched instruction
@@ -86,9 +90,18 @@ void CPU::runNextStep(Memory& mem) {
             cerr << "An error occurred: " << e.what() << endl;
         }
     }
+
 }
 
 // Method to get the register object
 Register& CPU::getRegister() {
     return reg;
+
+}
+
+void CPU::clear(){
+    reg.clear();
+
+    PC = 0;
+    IR = "0000";
 }

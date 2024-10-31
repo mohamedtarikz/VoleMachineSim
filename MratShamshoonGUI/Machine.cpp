@@ -6,6 +6,8 @@ Machine::Machine() : mem(), cpu() {}
 // Method to get a reference to the CPU
 CPU& Machine::getCPU() {
     return cpu;
+
+    // emit cpu.CPUupdated();
 }
 
 // Method to get a reference to the Register
@@ -16,4 +18,9 @@ Register& Machine::getRegister() {
 // Method to get a reference to the Memory
 Memory& Machine::getMemory() {
     return mem;
+}
+
+void Machine::clear(){
+    mem.clear();
+    cpu.clear();
 }

@@ -60,3 +60,11 @@ void Memory::setCell(int index, string value){
 string Memory::getCell(int index){
     return memory[index]; // Return the memory cell value
 }
+
+void Memory::clear(){
+    for(int i = 0 ; i <size ; i++ ){
+        memory[i] = "00";
+    }
+    emit MemoryUpdated();
+}
+
