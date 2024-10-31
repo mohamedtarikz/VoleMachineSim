@@ -69,24 +69,31 @@ public:
 };
 
 // CU class to handle control operations
-class CU{
+class CU : public QWidget{
+    Q_OBJECT
+
 public:
     // Method to load a value from memory to a register
     void load(int idxRegister, int idxMemory, Register& reg, Memory& mem);
     // Method to load a value to a register
     void load(int idxRegister, int value, Register& reg);
     // Method to store a value from a register to memory
-    void store(int idxRegister, int idxMemory, Register& reg, Memory& mem);
+    string store(int idxRegister, int idxMemory, Register& reg, Memory& mem);
+    // Method to print on screen window
     // Method to move a value from one register to another
     void move(int idxRegister1, int idxRegister2, Register& reg);
     // Method to jump to a memory location
     void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
     void halt(Register& reg, Memory& mem, int PC, string IR);
+signals:
+    void toPrint();
 };
 
 // CPU class to handle the execution of instructions
-class CPU {
+class CPU : public QWidget{
+    Q_OBJECT
+
     int PC; // Program Counter to keep track of the current instruction
     string IR; // Instruction Register to store the current instruction
     Register reg; // Register object to handle register operations
@@ -107,6 +114,8 @@ public:
     Register& getRegister();
     // Method to run the next step of the program
     void runNextStep(Memory&);
+signals:
+    void printUpdate(string str);
 };
 
 // Class to represent the machine with memory and CPU

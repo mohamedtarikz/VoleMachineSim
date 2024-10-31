@@ -12,6 +12,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignLeft);
+    ui->screenWindow->setAlignment(Qt::AlignCenter);
 
     textboxes[0] = &(*(ui->InputA));
     textboxes[1] = &(*(ui->InputB));
@@ -25,6 +26,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     printRegister(machine->getRegister());
     printMemory(machine->getMemory());
+    printToScreen("Screen");
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
@@ -32,6 +34,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(&(machine->getRegister()), &Register::registerUpdated, this, [=](){printRegister(machine->getRegister());});
     connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](){printMemory(machine->getMemory());});
     connect(ui->StepOverButton, &QPushButton::clicked, this, [=](){machine->getCPU().runNextStep(machine->getMemory());});
+    connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str){printToScreen(str);});
 }
 
 MainWindow::~MainWindow()
@@ -96,6 +99,12 @@ void MainWindow::loadFile()
         }
         file.close();
     }
+}
+
+void MainWindow::printToScreen(string str){
+    str += "\n";
+    QString tmp = QString::fromStdString(str);
+    ui->screenWindow->setText(ui->screenWindow->text() + tmp);
 }
 
 void MainWindow::printRegister(Register& reg){

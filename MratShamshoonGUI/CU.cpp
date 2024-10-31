@@ -1,5 +1,4 @@
 #include "VoleMachine.h"
-#include <iostream>
 #include <thread>
 
 // Load a value from memory into a register
@@ -13,12 +12,13 @@ void CU::load(int idxRegister, int value, Register &reg) {
 }
 
 // Store a value from a register into memory
-void CU::store(int idxRegister, int idxMemory, Register &reg, Memory &mem) {
+string CU::store(int idxRegister, int idxMemory, Register &reg, Memory &mem) {
     mem.setCell(idxMemory, ALU::decToHex(reg.getCell(idxRegister)));
     // Print the value if stored in memory cell 0
     if(idxMemory == 0){
-        std::cout << mem.getCell(idxMemory) << std::endl;
+        return mem.getCell(idxMemory);
     }
+    return "";
 }
 
 // Move a value from one register to another

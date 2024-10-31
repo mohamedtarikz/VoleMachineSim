@@ -56,7 +56,10 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
     } else if(instruction[0] == 2) {
         cu.load(instruction[1], instruction[2], reg);
     } else if(instruction[0] == 3) {
-        cu.store(instruction[1], instruction[2], reg, mem);
+        string tmp = cu.store(instruction[1], instruction[2], reg, mem);
+        if(!tmp.empty()){
+            emit printUpdate(tmp);
+        }
     } else if(instruction[0] == 4) {
         cu.move(instruction[1], instruction[2], reg);
     } else if(instruction[0] == 5) {
