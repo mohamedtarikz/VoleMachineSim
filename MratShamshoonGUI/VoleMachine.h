@@ -1,10 +1,10 @@
 #ifndef VOLEMACHINESIM_VOLEMACHINESIM_H
 #define VOLEMACHINESIM_VOLEMACHINESIM_H
 
+#include <QWidget>
 #include <string>
 #include <vector>
 #include <fstream>
-#include <cassert>
 using namespace std;
 
 // Memory class
@@ -14,14 +14,8 @@ class Memory {
 public:
     // Constructor to initialize memory with zeros
     Memory();
-    // Constructor to initialize memory from a file
-    explicit Memory(fstream&);
-    // Constructor to initialize memory from a vector of instructions
-    explicit Memory(vector<string>);
     // Method to load memory from a file
-    void loadMemory(fstream& file);
-    // Method to load memory from a vector of instructions
-    void loadMemory(vector<string> instructions);
+    int loadMemory(fstream& file);
     // Method to add a single instruction
     void addInstruction(string instruction, int index);
     // Method to set a value in a memory cell
@@ -31,7 +25,9 @@ public:
 };
 
 // Register class
-class Register {
+class Register : public QWidget {
+    Q_OBJECT
+
     int memory[16]; // Array to store register values
     int size = 16; // Size of the register
 public:
@@ -41,6 +37,8 @@ public:
     void setCell(int index, int value);
     // Method to get a value from a register cell
     int getCell(int index);
+signals:
+    void registerUpdated();
 };
 
 // ALU class to handle arithmetic and logic operations
@@ -115,36 +113,12 @@ class Machine {
 public:
     // Default constructor
     Machine();
-    // Constructor to initialize machine with memory from a file
-    Machine(fstream&);
-    // Constructor to initialize machine with memory from a vector of instructions
-    Machine(vector<string>);
     // Method to get the CPU object
     CPU& getCPU();
     // Method to get the Register object
     Register& getRegister();
     // Method to get the Memory object
     Memory& getMemory();
-};
-
-// Class to handle the main user interface
-class MainUI {
-    int choice; // Variable to store user choice
-public:
-    // Method to display the output menu
-    int DisplayOutputMenu(Machine& machine);
-    // Method to display the operation menu
-    int DisplayOperationMenu(Machine& machine);
-    // Method to load instructions manually
-    vector<string> loadInstruction();
-    // Method to handle the output choice
-    void handleChoiceOutput(int choice, Machine& machine);
-    // Method to handle the operation choice
-    void handleChoiceOperation(int choice, Machine& machine);
-    // Static method to output the state of the register and memory
-    static void outputState(Register& mainRegister, Memory& mainMemory, int PC, string IR);
-    // Method to load a file
-    fstream LoadFile();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

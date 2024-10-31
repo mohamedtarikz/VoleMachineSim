@@ -17,14 +17,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, Machine* = nullptr);
+    MainWindow(Machine* = nullptr, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
     void onTextChanged(int index);
     void addInstruction(QString instruction);
-
-    void on_pushButton_5_clicked();
+    void loadFile();
+    void printRegister(Register& reg);
 
 private:
     Ui::MainWindow *ui;

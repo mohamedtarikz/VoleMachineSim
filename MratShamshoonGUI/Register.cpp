@@ -18,4 +18,6 @@ void Register::setCell(int index, int value) {
         throw runtime_error("Index out of range");
     }
     memory[index] = value;
+
+    emit registerUpdated();
 }
