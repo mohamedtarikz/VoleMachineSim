@@ -137,8 +137,8 @@ public:
     Register& getRegister();
     // Method to get the Memory object
     Memory& getMemory();
-
     void clear();
+    void play();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

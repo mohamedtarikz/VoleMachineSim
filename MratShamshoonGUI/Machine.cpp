@@ -24,3 +24,9 @@ void Machine::clear(){
     mem.clear();
     cpu.clear();
 }
+
+void Machine::play(){
+    while(cpu.getPC() <= 254){
+        cpu.runNextStep(mem);
+    }
+}

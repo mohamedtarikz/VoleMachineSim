@@ -39,6 +39,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(ui->StepOverButton, &QPushButton::clicked, this, [=](){machine->getCPU().runNextStep(machine->getMemory());});
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str){printToScreen(str);});
     connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0 ;});
+    connect(ui->PlayButton, &QPushButton::clicked, this, [=](){machine->play();});
 }
 
 MainWindow::~MainWindow()

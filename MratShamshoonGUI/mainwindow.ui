@@ -278,7 +278,7 @@ QPushButton:hover .text {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="PlayButton">
            <property name="maximumSize">
             <size>
              <width>185</width>

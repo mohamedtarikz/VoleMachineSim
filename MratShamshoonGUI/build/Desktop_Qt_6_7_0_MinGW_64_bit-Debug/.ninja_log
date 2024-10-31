@@ -53,3 +53,17 @@
 3029	12272	7521144409615478	CMakeFiles/MratShamshoonGUI.dir/CU.cpp.obj	23b6fc4e442e0384
 2762	14044	7521144427340486	CMakeFiles/MratShamshoonGUI.dir/mainwindow.cpp.obj	8e46107daf628e34
 14045	17479	7521144461580920	MratShamshoonGUI.exe	68e1ed096bf59357
+91	13776	7521154163640633	MratShamshoonGUI_autogen/timestamp	628b4c6f9b47dfa9
+91	13776	7521154163640633	MratShamshoonGUI_autogen/mocs_compilation.cpp	628b4c6f9b47dfa9
+91	13776	7521154163640633	C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/timestamp	628b4c6f9b47dfa9
+91	13776	7521154163640633	C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/mocs_compilation.cpp	628b4c6f9b47dfa9
+14815	27281	7521154315895987	CMakeFiles/MratShamshoonGUI.dir/Machine.cpp.obj	8e139e1e4c6cb56
+15679	27434	7521154317550463	CMakeFiles/MratShamshoonGUI.dir/Register.cpp.obj	824d66e6455bd077
+15519	28453	7521154327562550	CMakeFiles/MratShamshoonGUI.dir/Memory.cpp.obj	334fd57a742508f7
+15371	28547	7521154328794510	CMakeFiles/MratShamshoonGUI.dir/CU.cpp.obj	23b6fc4e442e0384
+13778	29335	7521154336799797	CMakeFiles/MratShamshoonGUI.dir/MratShamshoonGUI_autogen/mocs_compilation.cpp.obj	fb3bc629952008da
+15092	29577	7521154339212106	CMakeFiles/MratShamshoonGUI.dir/CPU.cpp.obj	115cb46fdbdef18b
+14244	29635	7521154339790650	CMakeFiles/MratShamshoonGUI.dir/main.cpp.obj	2cc5db2793da2780
+13969	32017	7521154363554976	CMakeFiles/MratShamshoonGUI.dir/mainwindow.cpp.obj	8e46107daf628e34
+14606	37023	7521154413479074	CMakeFiles/MratShamshoonGUI.dir/ALU.cpp.obj	cf79406d8257519
+37024	43241	7521154475798578	MratShamshoonGUI.exe	68e1ed096bf59357
