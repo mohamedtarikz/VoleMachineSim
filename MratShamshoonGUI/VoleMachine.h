@@ -22,6 +22,8 @@ public:
     void loadMemory(fstream& file);
     // Method to load memory from a vector of instructions
     void loadMemory(vector<string> instructions);
+    // Method to add a single instruction
+    void addInstruction(string instruction, int index);
     // Method to set a value in a memory cell
     void setCell(int index, string value);
     // Method to get a value from a memory cell

@@ -91,6 +91,12 @@ void Memory::loadMemory(vector<string> instructions) {
     }
 }
 
+// Method to add a single instruction
+void Memory::addInstruction(string instruction, int index){
+    memory[index] = instruction.substr(0,2);
+    memory[index + 1] = instruction.substr(2,2);
+}
+
 // Method to set a memory cell value
 void Memory::setCell(int index, string value){
     if(value.size() != 2){
