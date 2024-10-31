@@ -8,7 +8,8 @@
 using namespace std;
 
 // Memory class
-class Memory {
+class Memory : public QWidget {
+    Q_OBJECT
     string memory[300]; // Array to store memory cells
     int size = 256; // Size of the memory
 public:
@@ -22,6 +23,8 @@ public:
     void setCell(int index, string value);
     // Method to get a value from a memory cell
     string getCell(int index);
+signals:
+    void MemoryUpdated();
 };
 
 // Register class

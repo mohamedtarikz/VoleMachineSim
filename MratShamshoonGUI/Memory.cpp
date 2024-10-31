@@ -29,13 +29,18 @@ int Memory::loadMemory(fstream &file) {
         memory[i+1] = tmp; // Store the second half of the byte
         i+=2;
     }
+    emit MemoryUpdated();
+
     return i;
+
 }
 
 // Method to add a single instruction
 void Memory::addInstruction(string instruction, int index){
     memory[index] = instruction.substr(0,2);
     memory[index + 1] = instruction.substr(2,2);
+
+    emit MemoryUpdated();
 }
 
 // Method to set a memory cell value
@@ -47,6 +52,8 @@ void Memory::setCell(int index, string value){
         throw runtime_error("Invalid memory index");
     } // Ensure the index is within bounds
     memory[index] = value; // Set the memory cell value
+
+    emit MemoryUpdated();
 }
 
 // Method to get a memory cell value

@@ -25,6 +25,7 @@ private slots:
     void addInstruction(QString instruction);
     void loadFile();
     void printRegister(Register& reg);
+    void printMemory(Memory & mem);
 
 private:
     Ui::MainWindow *ui;

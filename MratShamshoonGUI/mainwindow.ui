@@ -85,7 +85,7 @@ border: 2px solid #ffffff;</string>
              <item>
               <widget class="QFrame" name="frame">
                <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
+                <enum>QFrame::Shape::NoFrame</enum>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">
                 <item>
@@ -339,7 +339,9 @@ border: 2px solid #ffffff;</string>
 
 font: 500 9pt &quot;Glass TTY VT220&quot;;
 
-border: 2px solid #ffffff;</string>
+border: 2px solid #ffffff;
+
+color:#ffffff;</string>
          </property>
          <property name="text">
           <string/>
