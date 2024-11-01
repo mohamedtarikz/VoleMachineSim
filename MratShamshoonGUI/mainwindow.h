@@ -33,6 +33,7 @@ private:
     Ui::MainWindow *ui;
     QLineEdit* textboxes[4];
     int memIndex;
+    int speedOption;
     Machine* machine;
     bool validExtension(string);
 };

@@ -130,7 +130,8 @@ signals:
 // Class to represent the machine with memory and CPU
 class Machine {
     Memory mem; // Memory object to handle memory operations
-    CPU cpu; // CPU object to handle instruction execution
+    CPU cpu;    // CPU object to handle instruction execution
+    bool playing;
 public:
     // Default constructor
     Machine();
@@ -142,7 +143,7 @@ public:
     Memory& getMemory();
     void clear();
     void reset();
-    void play();
+    void play(int);
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

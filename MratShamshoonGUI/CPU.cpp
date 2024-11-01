@@ -112,7 +112,6 @@ void CPU::runNextStep(Memory& mem) {
 // Method to get the register object
 Register& CPU::getRegister() {
     return reg;
-
 }
 
 void CPU::clear(){
@@ -120,4 +119,6 @@ void CPU::clear(){
 
     PC = 0;
     IR = "0000";
+
+    emit CPUupdated();
 }

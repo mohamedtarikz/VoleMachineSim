@@ -9,6 +9,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     ui->setupUi(this);
 
     memIndex = 0;
+    speedOption = 1;
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignLeft);
@@ -40,7 +41,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());printMemory(machine->getMemory(), -2, machine->getCPU().getPC());});
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str, int type){printToScreen(str, type);});
     connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->screenWindow->clear();printToScreen("Screen", 2);});
-    connect(ui->PlayButton, &QPushButton::clicked, this, [=](){machine->play();});
+    connect(ui->PlayButton, &QPushButton::clicked, this, [=](){machine->play(speedOption);});
 }
 
 MainWindow::~MainWindow()
