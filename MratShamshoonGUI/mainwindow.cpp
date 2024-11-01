@@ -93,8 +93,8 @@ void MainWindow::loadFile()
         string filePathStr = filePath.toStdString();
 
         fstream file(filePathStr, ios::in);
-        if (file.fail()) {
-            throw invalid_argument("invalid file");
+        if (file.fail() || !validExtension(filePathStr)) {
+            printToScreen("Invalid File");
         }
         else{
             string outPath = "File Path: " + filePathStr;
@@ -104,6 +104,24 @@ void MainWindow::loadFile()
                 memIndex = machine->getMemory().loadMemory(file);
         }
         file.close();
+    }
+}
+
+bool MainWindow::validExtension(string fileName){
+    int dotPos = fileName.find_last_of('.');
+
+    if(dotPos == fileName.size()){
+        printToScreen("hhhhh");
+        return false;
+    }
+
+    string ext = fileName.substr(dotPos + 1);
+    if(ext == "txt"){
+        printToScreen("right");
+        return true;
+    } else{
+        printToScreen("wrong");
+        return false;
     }
 }
 

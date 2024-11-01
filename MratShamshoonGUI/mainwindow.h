@@ -34,5 +34,6 @@ private:
     QLineEdit* textboxes[4];
     int memIndex;
     Machine* machine;
+    bool validExtension(string);
 };
 #endif // MAINWINDOW_H
