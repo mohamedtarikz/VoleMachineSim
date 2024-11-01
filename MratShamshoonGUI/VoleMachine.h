@@ -25,7 +25,7 @@ public:
     string getCell(int index);
     void clear();
 signals:
-    void MemoryUpdated();
+    void MemoryUpdated(int change);
 };
 
 // Register class
@@ -44,7 +44,7 @@ public:
 
     void clear();
 signals:
-    void registerUpdated();
+    void registerUpdated(int idx);
 };
 
 // ALU class to handle arithmetic and logic operations
@@ -123,7 +123,7 @@ public:
     void runNextStep(Memory&);
     void clear();
 signals:
-    void printUpdate(string str);
+    void printUpdate(string str, int type);
     void CPUupdated();
 };
 

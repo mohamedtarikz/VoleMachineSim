@@ -24,9 +24,9 @@ private slots:
     void onTextChanged(int index);
     void addInstruction(QString instruction);
     void loadFile();
-    void printToScreen(string);
-    void printRegister(Register& reg);
-    void printMemory(Memory & mem);
+    void printToScreen(string, int);
+    void printRegister(Register& reg, int idx);
+    void printMemory(Memory & mem, int, int);
     void printPCIR(CPU& cp);
 
 private:

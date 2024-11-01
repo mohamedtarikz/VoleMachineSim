@@ -29,7 +29,7 @@ int Memory::loadMemory(fstream &file) {
         memory[i+1] = tmp; // Store the second half of the byte
         i+=2;
     }
-    emit MemoryUpdated();
+    emit MemoryUpdated(-10);
 
     return i;
 
@@ -40,7 +40,7 @@ void Memory::addInstruction(string instruction, int index){
     memory[index] = instruction.substr(0,2);
     memory[index + 1] = instruction.substr(2,2);
 
-    emit MemoryUpdated();
+    emit MemoryUpdated(index);
 }
 
 // Method to set a memory cell value
@@ -53,7 +53,7 @@ void Memory::setCell(int index, string value){
     } // Ensure the index is within bounds
     memory[index] = value; // Set the memory cell value
 
-    emit MemoryUpdated();
+    emit MemoryUpdated(index);
 }
 
 // Method to get a memory cell value
@@ -65,6 +65,6 @@ void Memory::clear(){
     for(int i = 0 ; i <size ; i++ ){
         memory[i] = "00";
     }
-    emit MemoryUpdated();
+    emit MemoryUpdated(-10);
 }
 

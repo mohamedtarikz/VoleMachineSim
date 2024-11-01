@@ -324,10 +324,10 @@ QPushButton:hover .text {
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
+          <string notr="true">background-color: rgb(0, 0, 0);
 
 font: 9pt &quot;Segoe UI&quot;;
-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
 
 border: 2px solid #ffffff;</string>
          </property>
@@ -339,7 +339,7 @@ border: 2px solid #ffffff;</string>
        <item>
         <widget class="QLabel" name="memoryWindow">
          <property name="styleSheet">
-          <string notr="true">background-color: #0A0A0A;
+          <string notr="true">background-color: #000000;
 
 font: 500 9pt &quot;Glass TTY VT220&quot;;
 

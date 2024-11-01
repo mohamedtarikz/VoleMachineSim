@@ -21,10 +21,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="909cca0d-38db-4b8a-ae50-b8eeaad3a60b" name="Changes" comment="GUI - TextBoxes Done">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_25_2024_11_26_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_25_2024_11_26_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2024_11_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2024_11_59_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_30_2024_8_50_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_30_2024_8_50_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/CPU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/CPU.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/Memory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/Memory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/Register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/Register.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/VoleMachine.h" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/VoleMachine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/ALU.cpp.2DC3F7FF260B55C2.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/ALU.cpp.2DC3F7FF260B55C2.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/CPU.cpp.0172267716F0FE6E.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/CPU.cpp.0172267716F0FE6E.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/CU.cpp.619E5E08F1FD6B70.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/CU.cpp.619E5E08F1FD6B70.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Machine.cpp.E1E8A83A7B84E6FC.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Machine.cpp.E1E8A83A7B84E6FC.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Memory.cpp.3715DF1945326330.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Memory.cpp.3715DF1945326330.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Register.cpp.92A7767F41C6B331.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/Register.cpp.92A7767F41C6B331.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/VoleMachine.h.E888566B7B871593.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/VoleMachine.h.E888566B7B871593.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/mainwindow.cpp.2C69BA867703FD1D.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/mainwindow.cpp.2C69BA867703FD1D.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/mainwindow.h.D1BAD5585823F3C9.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/mainwindow.h.D1BAD5585823F3C9.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/ui_mainwindow.h.2436EDC2366C225F.idx" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.qtc_clangd/.cache/clangd/index/ui_mainwindow.h.2436EDC2366C225F.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/MratShamshoonGUI_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/MratShamshoonGUI_autogen.dir/ParseCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/MratShamshoonGUI/mainwindow.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +117,7 @@
       <workItem from="1730307531716" duration="29000" />
       <workItem from="1730310528111" duration="1764000" />
       <workItem from="1730313192774" duration="1879000" />
-      <workItem from="1730413033811" duration="1145000" />
+      <workItem from="1730413033811" duration="1399000" />
     </task>
     <task id="LOCAL-00001" summary="LoadingMemory - DONE">
       <option name="closed" value="true" />

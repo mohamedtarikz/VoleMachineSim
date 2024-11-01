@@ -26,20 +26,20 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
         connect(textboxes[i], &QLineEdit::textChanged, this, [=](){onTextChanged(i);});
     }
 
-    printRegister(machine->getRegister());
-    printMemory(machine->getMemory());
-    printToScreen("Screen");
+    printRegister(machine->getRegister(), -1);
+    printMemory(machine->getMemory(), -10, 0);
+    printToScreen("Screen", 2);
     printPCIR(machine->getCPU());
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->LoadFileButton, &QPushButton::clicked, this, [=](){machine->clear();loadFile();});
-    connect(&(machine->getRegister()), &Register::registerUpdated, this, [=](){printRegister(machine->getRegister());});
-    connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](){printMemory(machine->getMemory());});
-    connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());});
-    connect(ui->StepOverButton, &QPushButton::clicked, this, [=](){machine->getCPU().runNextStep(machine->getMemory());});
-    connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str){printToScreen(str);});
-    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->screenWindow->clear();printToScreen("Screen");});
+    connect(&(machine->getRegister()), &Register::registerUpdated, this, [=](int idx){printRegister(machine->getRegister(), idx);});
+    connect(ui->StepOverButton, &QPushButton::clicked, this, [=](){if(machine->getCPU().getPC() <= 254){machine->getCPU().runNextStep(machine->getMemory());}});
+    connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](int change){printMemory(machine->getMemory(), change, machine->getCPU().getPC());});
+    connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());printMemory(machine->getMemory(), -2, machine->getCPU().getPC());});
+    connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str, int type){printToScreen(str, type);});
+    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->screenWindow->clear();printToScreen("Screen", 2);});
     connect(ui->PlayButton, &QPushButton::clicked, this, [=](){machine->play();});
 }
 
@@ -64,7 +64,7 @@ void MainWindow::addInstruction(QString instruction){
     string ins = instruction.toStdString();
 
     if(ins.size() < 4){
-        throw invalid_argument("Instruction size is too short");
+        printToScreen("Instruction size is too short", 0);
     }
     else{
         if(memIndex <= 254){
@@ -72,13 +72,12 @@ void MainWindow::addInstruction(QString instruction){
                 textboxes[i]->clear();
             }
             textboxes[0]->setFocus();
-            if(machine){
-                machine->getMemory().addInstruction(ins, memIndex);
-                memIndex+=2;
-            }
+            transform(ins.begin(), ins.end(), ins.begin(), ::toupper);
+            machine->getMemory().addInstruction(ins, memIndex);
+            memIndex+=2;
         }
         else{
-            throw runtime_error("Memory is full");
+            printToScreen("Memory is full", 0);
         }
     }
 }
@@ -94,7 +93,7 @@ void MainWindow::loadFile()
 
         fstream file(filePathStr, ios::in);
         if (file.fail() || !validExtension(filePathStr)) {
-            printToScreen("Invalid File");
+            printToScreen("Invalid File", 0);
         }
         else{
             string outPath = "File Path: " + filePathStr;
@@ -111,50 +110,66 @@ bool MainWindow::validExtension(string fileName){
     int dotPos = fileName.find_last_of('.');
 
     if(dotPos == fileName.size()){
-        printToScreen("hhhhh");
         return false;
     }
 
     string ext = fileName.substr(dotPos + 1);
     if(ext == "txt"){
-        printToScreen("right");
         return true;
     } else{
-        printToScreen("wrong");
         return false;
     }
 }
 
-void MainWindow::printToScreen(string str){
-    str += "\n";
+void MainWindow::printToScreen(string str, int type){
     QString tmp = QString::fromStdString(str);
-    ui->screenWindow->setText(ui->screenWindow->text() + tmp);
+    QString out;
+    if(type == 0){
+        out = "<font color='#cc0000'>" + tmp + "</font><br>";
+    } else if(type == 1){
+        out = "<font color='#FAFAFB'>" + tmp + "</font><br>";
+    } else if(type == 2){
+        out = "<font color='#4E9A06'>" + tmp + "</font><br>";
+    }
+    ui->screenWindow->setText(ui->screenWindow->text() + out);
 }
 
-void MainWindow::printRegister(Register& reg){
-    string output = "Registers\n";
+void MainWindow::printRegister(Register& reg, int idx){
+    QString out;
+    out = "<font color='#FAFAFB'>" + QString::fromStdString("Registers") + "</font><br>";
     for (int i = 0; i < 16; ++i) {
-        output += "0x" + ALU::decToHex(i) + " ";
-        output += ALU::decToHex(reg.getCell(i));
-        output += "\n";
+        if(i != idx){
+            out += "<font color='#FAFAFB'>" + QString::fromStdString("0x" + ALU::decToHex(i) + " ") + "<\font>";
+            out += "<font color='#4E9A06'>" + QString::fromStdString(ALU::decToHex(reg.getCell(i))) + "<\font><br>";
+        } else {
+            out += "<font color='#1391DB'>" + QString::fromStdString("0x" + ALU::decToHex(i) + " ") + "<\font>";
+            out += "<font color='#1391DB'>" + QString::fromStdString(ALU::decToHex(reg.getCell(i))) + "<\font><br>";
+        }
     }
 
-    ui->registerWindow->setText(QString::fromStdString(output));
+    ui->registerWindow->setText(out);
 }
-void MainWindow::printMemory(Memory& memo){
-    string output = "Memory";
-    for(int i = 0; i < 16;i++){
-        output += "  0x" + ALU::decToHex(i) + " ";
+void MainWindow::printMemory(Memory& memo, int change, int wait){
+    QString out = "<font color='#FAFAFB'>" + QString::fromStdString("Memory") + "<\font>";
+    string tmp;
+    for(int i = 0; i < 16; i++){
+        tmp += "  0x" + ALU::decToHex(i) + " ";
     }
-    output += "\n";
-    for(int i = 0 ;i <16 ;i++){
-        output+= "0x" + ALU::decToHex(i) + "      ";
-        for(int j = 0 ; j < 16 ; j++){
-            output += memo.getCell(i * 16 + j) +  "      ";
+    out += "<font color='#FAFAFB'>" + QString::fromStdString(tmp) + "<\font><br>";
+    for(int i = 0; i < 16; i++){
+        out += "<font color='#FAFAFB'>" + QString::fromStdString("0x" + ALU::decToHex(i) + "      ") + "<\font>";
+        for(int j = 0 ; j < 16; j++){
+            if((i * 16 + j) == change || (i * 16 + j) == change + 1){
+                out += "<font color='#1391DB'>" + QString::fromStdString(memo.getCell(i * 16 + j) +  "      ") + "<\font>";
+            } else if((i * 16 + j) == wait || (i * 16 + j) == wait + 1){
+                out += "<font color='#ffd91e'>" + QString::fromStdString(memo.getCell(i * 16 + j) +  "      ") + "<\font>";
+            } else{
+                out += "<font color='#4E9A06'>" + QString::fromStdString(memo.getCell(i * 16 + j) +  "      ") + "<\font>";
+            }
         }
-        output += "\n";
+        out += "<br>";
     }
-    ui->memoryWindow->setText(QString::fromStdString(output));
+    ui->memoryWindow->setText(out);
 }
 void MainWindow::printPCIR(CPU& cp){
     string output = "PC: " + to_string(cp.getPC());

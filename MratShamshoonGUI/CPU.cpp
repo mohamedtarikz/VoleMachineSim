@@ -16,7 +16,6 @@ string CPU::getIR() {
 // Method to get the current program counter value
 int CPU::getPC() {
     return PC;
-
 }
 
 // Method to fetch the next instruction from memory
@@ -66,7 +65,7 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
     } else if(instruction[0] == 3) {
         string tmp = cu.store(instruction[1], instruction[2], reg, mem);
         if(!tmp.empty()){
-            emit printUpdate(tmp);
+            emit printUpdate(tmp, 1);
         }
     } else if(instruction[0] == 4) {
         cu.move(instruction[1], instruction[2], reg);
@@ -85,7 +84,7 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
     } else if(instruction[0] == 11){
         cu.jump(false, instruction[1], instruction[2], reg, PC);
     } else if(instruction[0] == 12){
-        emit printUpdate(cu.halt(PC));
+        emit printUpdate(cu.halt(PC), 2);
     } else if(instruction[0] == 13){
         cu.jump(true, instruction[1], instruction[2], reg, PC);
     }
@@ -104,7 +103,7 @@ void CPU::runNextStep(Memory& mem) {
             execute(reg, mem, instruction); // Execute the instruction
         }
         catch (exception& e) {
-            emit printUpdate(e.what());
+            emit printUpdate(e.what(), 0);
         }
     }
 
