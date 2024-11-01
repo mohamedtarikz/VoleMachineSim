@@ -23,7 +23,7 @@ int CPU::getPC() {
 void CPU::fetch(Memory& mem) {
     if(PC >= 255) { // Check if the program counter has reached the end
         cout<<"Program Counter has reached the end."<<endl;
-        cu.halt(reg, mem, PC, IR); // Halt the execution
+        cu.halt(PC); // Halt the execution
     }
     // Fetch two consecutive memory cells and concatenate them to form the instruction
     IR = mem.getCell(PC) + mem.getCell(PC+1);
@@ -42,10 +42,13 @@ vector<int> CPU::decode() {
     if(decoded[0] == 4) {
         decoded.emplace_back(ALU::hexToDec(IR.substr(2, 1)));
         decoded.emplace_back(ALU::hexToDec(IR.substr(3, 1)));
-    } else if(decoded[0] == 5 || decoded[0] == 6) {
+    } else if(decoded[0] == 5 || decoded[0] == 6 || decoded[0] == 7 || decoded[0] == 8 || decoded[0] == 9) {
         decoded.emplace_back(ALU::hexToDec(IR.substr(1, 1)));
         decoded.emplace_back(ALU::hexToDec(IR.substr(2, 1)));
         decoded.emplace_back(ALU::hexToDec(IR.substr(3, 1)));
+    } else if(decoded[0] == 10){
+        decoded.emplace_back(ALU::hexToDec(IR.substr(1,1)));
+        decoded.emplace_back(ALU::hexToDec(IR.substr(3,1)));
     } else {
         decoded.emplace_back(ALU::hexToDec(IR.substr(1, 1)));
         decoded.emplace_back(ALU::hexToDec(IR.substr(2, 2)));
@@ -71,10 +74,20 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         alu.sumTwosComplement(instruction[1], instruction[2], instruction[3], reg);
     } else if(instruction[0] == 6) {
         alu.sumFloatingPoint(instruction[1], instruction[2], instruction[3], reg);
-    } else if(instruction[0] == 11) {
-        cu.jump(instruction[1], instruction[2], reg, PC);
-    } else if(instruction[0] == 12) {
-        cu.halt(reg, mem, PC, IR);
+    } else if(instruction[0] == 7) {
+        alu.orOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 8) {
+        alu.andOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 9) {
+        alu.xorOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 10){
+        alu.rotation(instruction[1], instruction[2], reg);
+    } else if(instruction[0] == 11){
+        cu.jump(false, instruction[1], instruction[2], reg, PC);
+    } else if(instruction[0] == 12){
+        emit printUpdate(cu.halt(PC));
+    } else if(instruction[0] == 13){
+        cu.jump(true, instruction[1], instruction[2], reg, PC);
     }
 }
 
@@ -82,7 +95,7 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
 void CPU::runNextStep(Memory& mem) {
     if(PC >= 255) {// Check if the program counter has reached the end
         cout<<"Program Counter has reached the end."<<endl;
-        cu.halt(reg, mem, PC, IR); // Halt the execution
+        cu.halt(PC); // Halt the execution
     }
     fetch(mem); // Fetch the next instruction
     if(alu.isValid(IR)) {// Check if the instruction is valid
@@ -91,7 +104,7 @@ void CPU::runNextStep(Memory& mem) {
             execute(reg, mem, instruction); // Execute the instruction
         }
         catch (exception& e) {
-            cerr << "An error occurred: " << e.what() << endl;
+            emit printUpdate(e.what());
         }
     }
 

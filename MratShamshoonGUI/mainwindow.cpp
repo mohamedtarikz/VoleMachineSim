@@ -12,7 +12,8 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignLeft);
-    ui->screenWindow->setAlignment(Qt::AlignCenter);
+    ui->screenWindow->setAlignment(Qt::AlignTop);
+    ui->screenWindow->setAlignment(Qt::AlignHCenter);
     ui->VariablesWindow->setAlignment(Qt::AlignLeft);
 
     textboxes[0] = &(*(ui->InputA));
@@ -32,7 +33,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
-    connect(ui->LoadFileButton, &QPushButton::clicked, this, [=](){loadFile();});
+    connect(ui->LoadFileButton, &QPushButton::clicked, this, [=](){machine->clear();loadFile();});
     connect(&(machine->getRegister()), &Register::registerUpdated, this, [=](){printRegister(machine->getRegister());});
     connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](){printMemory(machine->getMemory());});
     connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());});
@@ -129,7 +130,7 @@ void MainWindow::printMemory(Memory& memo){
     }
     output += "\n";
     for(int i = 0 ;i <16 ;i++){
-        output+= "0x" + ALU::decToHex(i) + " ";
+        output+= "0x" + ALU::decToHex(i) + "      ";
         for(int j = 0 ; j < 16 ; j++){
             output += memo.getCell(i * 16 + j) +  "      ";
         }

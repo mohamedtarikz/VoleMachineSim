@@ -26,14 +26,23 @@ void CU::move(int idxRegister1, int idxRegister2, Register &reg) {
 }
 
 // Jump to a memory address if the value in the register matches the value in register 0
-void CU::jump(int idxRegister, int idxMemory, Register &reg, int& PC) {
-    if(reg.getCell(idxRegister) != reg.getCell(0)){
-        return;
+void CU::jump(bool choice, int idxRegister, int idxMemory, Register &reg, int& PC) {
+    if(choice){
+        if(ALU::cnvrtTwosComplement(ALU::decToBin(reg.getCell(idxRegister))) <= ALU::cnvrtTwosComplement(ALU::decToBin(reg.getCell(0)))){
+            return;
+        }
+        PC = idxMemory;
     }
-    PC = idxMemory;
+    else{
+        if(reg.getCell(idxRegister) != reg.getCell(0)){
+            return;
+        }
+        PC = idxMemory;
+    }
 }
 
 // Halt the execution and output the state of registers and memory
-void CU::halt(Register& reg, Memory& mem, int PC, string IR) {
-
+string CU::halt(int& PC) {
+    PC = 256;
+    return "Program has finished with return state 0...";
 }

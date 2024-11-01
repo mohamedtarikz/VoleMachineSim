@@ -51,11 +51,11 @@ signals:
 class ALU {
     // Method to convert a decimal integer to a floating point binary string
     string cnvrtToFloatingPoint(double);
-    // Method to convert a binary string to a decimal integer in two's complement form
-    int cnvrtTwosComplement(string);
 public:
     // Method to check if a string is a valid hexadecimal number
     bool isValid(string);
+    // Method to convert a binary string to a decimal integer in two's complement form
+    static int cnvrtTwosComplement(string);
     // Method to convert a hexadecimal string to a decimal integer
     static int hexToDec(string);
     // Method to convert a decimal integer to a hexadecimal string
@@ -64,16 +64,21 @@ public:
     static int binToDec(string);
     // Method to convert a decimal integer to a binary string
     static string decToBin(int, int = 8);
-    // Method to sum
+    // Methods to sum
     void sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
     void sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
-    // Method to add to register values
-    void add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Methods for OR operator
+    void orOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for AND operator
+    void andOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for XOR operator
+    void xorOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for rotating binary
+    void rotation(int idxRegister, int n, Register& reg);
 };
 
 // CU class to handle control operations
-class CU : public QWidget{
-    Q_OBJECT
+class CU {
 
 public:
     // Method to load a value from memory to a register
@@ -86,11 +91,9 @@ public:
     // Method to move a value from one register to another
     void move(int idxRegister1, int idxRegister2, Register& reg);
     // Method to jump to a memory location
-    void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
+    void jump(bool choice, int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
-    void halt(Register& reg, Memory& mem, int PC, string IR);
-signals:
-    void toPrint();
+    string halt(int& PC);
 };
 
 
@@ -138,6 +141,7 @@ public:
     // Method to get the Memory object
     Memory& getMemory();
     void clear();
+    void reset();
     void play();
 };
 
