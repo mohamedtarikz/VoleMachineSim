@@ -193,11 +193,14 @@ void MainWindow::printMemory(Memory& memo, int change, int wait){
         out += "<font style='color:#FAFAFB;'>" + QString::fromStdString("0x" + ALU::decToHex(i)) + " | " "<\font>";
         for(int j = 0 ; j < 16; j++){
             if((i * 16 + j) == change || (i * 16 + j) == change + 1){
-                out += "<font style='color:#1391DB;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font style='color:#1391DB;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) ;
+                out += "<font style='color:#FAFAFB;'> | </font>";
             } else if((i * 16 + j) == wait || (i * 16 + j) == wait + 1){
-                out += "<font style='color:#ffd91e;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font style='color:#ffd91e;'>" + QString::fromStdString(memo.getCell(i * 16 + j));
+                out += "<font style='color:#FAFAFB;'> | </font>";
             } else{
-                out += "<font style='color:#4E9A06;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font style='color:#4E9A06;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) ;
+                out += "<font style='color:#FAFAFB;'> | </font>";
             }
         }
         out += "<br><div style='line-height: 0.48;'><br></div>";
