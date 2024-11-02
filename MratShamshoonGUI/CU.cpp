@@ -44,5 +44,5 @@ void CU::jump(bool choice, int idxRegister, int idxMemory, Register &reg, int& P
 // Halt the execution and output the state of registers and memory
 string CU::halt(int& PC) {
     PC = 256;
-    return "Program has finished with return state 0...";
+    return "Program has finished...";
 }

@@ -33,11 +33,13 @@ void Machine::play(int speed){
     playing = !playing;
 
     if(playing){
-        int delay = 0;
+        int delay = 500;
         if(speed == 1){
             delay = 1500;
         } else if(speed == 2){
             delay = 3000;
+        } else if (speed == 3) {
+            delay = 0;
         }
         while(playing && cpu.getPC() <= 254){
             cpu.runNextStep(mem);
@@ -46,5 +48,6 @@ void Machine::play(int speed){
             QTimer::singleShot(delay, &loopHandle, &QEventLoop::quit);
             loopHandle.exec();
         }
+        playing = false;
     }
 }

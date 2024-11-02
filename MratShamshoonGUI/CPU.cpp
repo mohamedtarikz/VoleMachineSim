@@ -105,6 +105,8 @@ void CPU::runNextStep(Memory& mem) {
         catch (exception& e) {
             emit printUpdate(e.what(), 0);
         }
+    } else if(IR != "0000"){
+        emit printUpdate("Invalid Operation", 0);
     }
 
 }

@@ -6,255 +6,275 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1445</width>
-    <height>939</height>
+    <width>1865</width>
+    <height>897</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>1050</width>
-      <height>723</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0" rowspan="2">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="screenWindow">
-         <property name="minimumSize">
-          <size>
-           <width>250</width>
-           <height>400</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(0, 0, 0);
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(28, 28, 28);</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0" rowspan="2">
+       <layout class="QVBoxLayout" name="Screenandpcir">
+        <item>
+         <widget class="QLabel" name="screenWindow">
+          <property name="minimumSize">
+           <size>
+            <width>243</width>
+            <height>727</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>243</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
 
-font: 500 9pt &quot;Glass TTY VT220&quot;;
-
-border: 2px solid #ffffff;
-
-color: #ffffff;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="VariablesWindow">
-         <property name="minimumSize">
-          <size>
-           <width>250</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>120</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(0, 0, 0);
-
-font: 500 9pt &quot;Glass TTY VT220&quot;;
+font: 22pt &quot;Glass TTY VT220&quot;;
+color: #4E9A06;
 
 border: 2px solid #ffffff;
 
-color:#ffffff;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="1">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QFrame" name="frame">
-               <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
-                 <widget class="QLineEdit" name="InputA">
-                  <property name="minimumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="InputB">
-                  <property name="minimumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="InputC">
-                  <property name="minimumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="InputD">
-                  <property name="minimumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>80</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="AddInstructionButton">
-               <property name="maximumSize">
-                <size>
-                 <width>185</width>
-                 <height>95</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Add</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLabel" name="ErrorLabel1">
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="ErrorLabel2">
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QLabel" name="FilePathLabel">
-               <property name="maximumSize">
-                <size>
-                 <width>350</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>file path</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="LoadFileButton">
-               <property name="maximumSize">
-                <size>
-                 <width>100</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Load file</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QPushButton" name="StepOverButton">
-           <property name="maximumSize">
-            <size>
-             <width>104</width>
-             <height>55</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">
-/* Normal state */
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
+
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="VariablesWindow">
+          <property name="minimumSize">
+           <size>
+            <width>243</width>
+            <height>120</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>243</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
+
+font: 32pt &quot;Glass TTY VT220&quot;;
+color: #FFFFFF;
+
+border: 2px solid #ffffff;
+
+ qproperty-alignment: 'AlignLeft | AlignVCenter';
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="controlpanel">
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLineEdit" name="InputA">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(0, 0, 0);
+
+border:5px solid #4E9A06;
+
+color:#ffffff;
+selection-color: rgb(78, 154, 6);
+selection-background-color: rgb(255, 255, 255);
+
+display: flex;
+justify-content: center; /* Horizontal centering */
+align-items: center;     /* Vertical centering */
+
+text-align: center;
+
+font: 70pt &quot;Digital-7&quot;;
+
+ qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+
+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="InputB">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(0, 0, 0);
+
+border:5px solid #4E9A06;
+
+color:#ffffff;
+selection-color: rgb(78, 154, 6);
+selection-background-color: rgb(255, 255, 255);
+
+display: flex;
+justify-content: center; /* Horizontal centering */
+align-items: center;     /* Vertical centering */
+
+text-align: center;
+
+font: 70pt &quot;Digital-7&quot;;
+
+ qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+
+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="InputC">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(0, 0, 0);
+
+border:5px solid #4E9A06;
+
+color:#ffffff;
+selection-color: rgb(78, 154, 6);
+selection-background-color: rgb(255, 255, 255);
+
+display: flex;
+justify-content: center; /* Horizontal centering */
+align-items: center;     /* Vertical centering */
+
+text-align: center;
+
+font: 70pt &quot;Digital-7&quot;;
+
+ qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+
+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="InputD">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(0, 0, 0);
+
+
+border:5px solid #4E9A06;
+
+color:#ffffff;
+selection-color: rgb(78, 154, 6);
+selection-background-color: rgb(255, 255, 255);
+
+display: flex;
+justify-content: center; /* Horizontal centering */
+align-items: center;     /* Vertical centering */
+
+text-align: center;
+
+font: 70pt &quot;Digital-7&quot;;
+
+ qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+
+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="AddInstructionButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>187</width>
+                  <height>97</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>187</width>
+                  <height>97</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
 QPushButton {
-    min-width: 1.8px; 
-    min-height: 9.5px; 
-    max-width: 185px; 
-   	max-height: 95px; 
-    height: 51%;
-	width:100%;
-    align-items: center;
-    justify-content: center;
-	background-color: #FFFFFF;
+	background-image: url(:/new/Butoon/resources/Add Button.png);
     color: #4D4D4D;                    /* Text color */
-    border: 2px outset #000000;   
+	border-radius: 1px;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
 }
 
 QPushButton:hover {
-	background-color:#E49413 ;
+	background-image: url(:/new/Button_H/resources/Add Button_h.png);
 }
 
 QPushButton:pressed {
-    border: 2px inset #8aa6d4; /* Gives a sunken look when pressed */
+	background-image: url(:/new/Button_P/resources/Add Button_p.png);
 }
 
 QPushButton .text {
@@ -271,91 +291,728 @@ QPushButton:hover .text {
 
 }
 </string>
-           </property>
-           <property name="text">
-            <string>Play one</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="PlayButton">
-           <property name="maximumSize">
-            <size>
-             <width>185</width>
-             <height>95</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Play all</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="Clear">
-           <property name="maximumSize">
-            <size>
-             <width>185</width>
-             <height>95</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Clear</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item row="1" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="registerWindow">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>500</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(0, 0, 0);
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>15</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>15</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="FilePathLabel">
+                <property name="maximumSize">
+                 <size>
+                  <width>360</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:2px solid rgb(78, 154, 6);
+font: 9pt &quot;Retro Gaming&quot;;
+color:#ffffff;
+border-radius:3px;</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;file path&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="LoadFileButton">
+                <property name="maximumSize">
+                 <size>
+                  <width>185</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 3px;
+	font: 12pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
 
-font: 9pt &quot;Segoe UI&quot;;
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Load file</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="4">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QPushButton" name="Clear">
+                  <property name="minimumSize">
+                   <size>
+                    <width>185</width>
+                    <height>95</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>185</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">/* Normal state */
+QPushButton {
+	background-image: url(:/new/Butoon/resources/clear button.png);
+	border-radius: 1px;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-image: url(:/new/Button_H/resources/clear button_h.png);
+}
+
+QPushButton:pressed {
+	background-image: url(:/new/Button_P/resources/clear button_p.png);
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="Reset">
+                  <property name="minimumSize">
+                   <size>
+                    <width>185</width>
+                    <height>95</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>185</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6a00;&quot;&gt;Resets Pc to zero&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6a00;&quot;&gt;while keeping Memmory&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">/* Normal state */
+QPushButton {
+	background-image: url(:/new/Butoon/resources/Reset Button.png);
+	border-radius: 1px;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-image: url(:/new/Button_H/resources/Reset Button_h.png);
+}
+
+QPushButton:pressed {
+	background-image: url(:/new/Button_P/resources/Reset Button_p.png);
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QPushButton" name="StepOverButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>185</width>
+                  <height>95</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-image: url(:/new/Butoon/resources/One step.png);
+	border-radius: 1px;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-image: url(:/new/Button_H/resources/One step_h.png);
+}
+
+QPushButton:pressed {
+	background-image: url(:/new/Button_P/resources/One step_p.png);
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="PlayButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>185</width>
+                  <height>95</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-image: url(:/new/Butoon/resources/Play all.png);
+	border-radius: 1px;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-image: url(:/new/Button_H/resources/Play all_h.png);
+}
+
+QPushButton:pressed {
+	background-image: url(:/new/Button_P/resources/Play all_p.png);
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="8">
+           <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>358</width>
+              <height>172</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-image: url(:/new/Logo/resources/Logo.png);
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="speedlabel">
+              <property name="styleSheet">
+               <string notr="true">text-align:center;
+font: 9pt &quot;Retro Gaming&quot;;
 color: rgb(255, 255, 255);
+qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+</string>
+              </property>
+              <property name="text">
+               <string>Speed Controller</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Speed2">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
 
-border: 2px solid #ffffff;</string>
-         </property>
-         <property name="text">
-          <string>Hello</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="memoryWindow">
-         <property name="styleSheet">
-          <string notr="true">background-color: #000000;
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
 
-font: 500 9pt &quot;Glass TTY VT220&quot;;
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>X2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Speed1">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>X1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QPushButton" name="Speed025">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>X0.25</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="Speed05">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>X0.5</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="7">
+           <widget class="QLabel" name="label_5">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QLabel" name="label_6">
+            <property name="minimumSize">
+             <size>
+              <width>10</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>10</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="memoryandreg">
+        <item>
+         <widget class="QLabel" name="registerWindow">
+          <property name="minimumSize">
+           <size>
+            <width>243</width>
+            <height>628</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>243</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Glass TTY VT220</family>
+            <pointsize>32</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
+
+font: 32pt &quot;Glass TTY VT220&quot;;
+color: #4E9A06;
 
 border: 2px solid #ffffff;
 
-color:#ffffff;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="memoryWindow">
+          <property name="minimumSize">
+           <size>
+            <width>1215</width>
+            <height>628</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
+
+font: 25pt &quot;Glass TTY VT220&quot;;
+color: #4E9A06;
+
+border: 2px solid #ffffff;
+
+
+  display: flex;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

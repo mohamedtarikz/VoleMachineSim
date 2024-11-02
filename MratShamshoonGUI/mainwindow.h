@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QEvent>
+#include <QKeyEvent>
 #include "VoleMachine.h"
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +30,7 @@ private slots:
     void printRegister(Register& reg, int idx);
     void printMemory(Memory & mem, int, int);
     void printPCIR(CPU& cp);
+    void changeBox(int, int);
 
 private:
     Ui::MainWindow *ui;
@@ -37,4 +40,31 @@ private:
     Machine* machine;
     bool validExtension(string);
 };
+
+class SpecialKeysEvent : public QObject{
+    Q_OBJECT
+
+public:
+    using QObject::QObject;
+signals:
+    void keyPressed(int type);
+protected:
+    bool eventFilter(QObject* obj, QEvent* event) override{
+        if(event->type() == QEvent::KeyPress){
+            QKeyEvent* key = static_cast<QKeyEvent*>(event);
+            if(key->key() == Qt::Key_Backspace){
+                emit keyPressed(0);
+            }
+            else if(key->key() == Qt::Key_Right){
+                emit keyPressed(1);
+            }
+            else if(key->key() == Qt::Key_Left){
+                emit keyPressed(2);
+            }
+            return false;
+        }
+        return QObject::eventFilter(obj, event);
+    }
+};
+
 #endif // MAINWINDOW_H
