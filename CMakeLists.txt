@@ -14,4 +14,14 @@ add_executable(VoleMachineSim
         Src/Memory.cpp
         Src/Register.cpp
         Src/VoleMachineSim.h
-        Main.cpp)
+        Main.cpp
+        MratShamshoonGUI/CU.cpp)
+add_executable(new_target MratShamshoonGUI/CU.cpp
+        MratShamshoonGUI/CU.cpp
+        MratShamshoonGUI/ALU.cpp
+        MratShamshoonGUI/CPU.cpp
+        MratShamshoonGUI/Machine.cpp
+        MratShamshoonGUI/main.cpp
+        MratShamshoonGUI/mainwindow.cpp
+        MratShamshoonGUI/Memory.cpp
+        MratShamshoonGUI/Register.cpp)

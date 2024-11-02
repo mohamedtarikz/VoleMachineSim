@@ -1,5 +1,5 @@
 # ninja log v5
-5	570	7520734743552626	build.ninja	e25feb9778f68ee2
+0	336	7522730572523073	build.ninja	e25feb9778f68ee2
 1	2231	7520734572772373	CMakeFiles/VoleMachineSim.dir/Src/Memory.cpp.obj	90c1311f766bf6b8
 218	2222	7520734572662732	CMakeFiles/VoleMachineSim.dir/Src/CPU.cpp.obj	aa5f955ef70b8cbe
 36	2042	7520734570828881	CMakeFiles/VoleMachineSim.dir/Src/Register.cpp.obj	ed77f06767a96f25
@@ -7,6 +7,5 @@
 168	2102	7520734571287369	CMakeFiles/VoleMachineSim.dir/Src/Machine.cpp.obj	db23123e356cee45
 116	2356	7520734574028163	CMakeFiles/VoleMachineSim.dir/Src/CU.cpp.obj	758141e04d6b7135
 74	2540	7520734575872018	CMakeFiles/VoleMachineSim.dir/Src/MainUI.cpp.obj	56b0089ec2db1bb1
-0	336	7520734743552626	build.ninja	e25feb9778f68ee2
 5	599	7520734750122452	CMakeFiles/VoleMachineSim.dir/Main.cpp.obj	dffaa4adcafd7856
 600	2559	7520734769633690	VoleMachineSim.exe	fe59c51b7833ffa9

@@ -144,6 +144,8 @@ public:
     void clear();
     void reset();
     void play(int);
+    void stop();
+    bool isPlaying();
 };
 
 #endif //VOLEMACHINESIM_VOLEMACHINESIM_H

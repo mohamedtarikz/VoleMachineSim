@@ -10,7 +10,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     SpecialKeysEvent *filter[4] = {new SpecialKeysEvent, new SpecialKeysEvent, new SpecialKeysEvent, new SpecialKeysEvent};
 
-    memIndex = 0;
+    memIndex = 2;
     speedOption = 0;
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
@@ -33,9 +33,10 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     }
 
     printRegister(machine->getRegister(), -1);
-    printMemory(machine->getMemory(), -10, 0);
+    printMemory(machine->getMemory(), -10, 2);
     printToScreen("Screen", 1);
     printPCIR(machine->getCPU());
+    speed1();
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
@@ -47,10 +48,10 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str, int type){printToScreen(str, type);});
     connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->screenWindow->clear();printToScreen("Screen", 1);});
     connect(ui->Reset, &QPushButton::clicked, this, [=](){machine->reset();ui->screenWindow->clear();printToScreen("Screen", 1);});
-    connect(ui->Speed1, &QPushButton::clicked, this, [=](){speedOption=0;});
-    connect(ui->Speed05, &QPushButton::clicked, this, [=](){speedOption=1;});
-    connect(ui->Speed025, &QPushButton::clicked, this, [=](){speedOption=2;});
-    connect(ui->Speed2, &QPushButton::clicked, this, [=](){speedOption=3;});
+    connect(ui->Speed1, &QPushButton::clicked, this, [=](){speed1();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
+    connect(ui->Speed05, &QPushButton::clicked, this, [=](){speed05();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
+    connect(ui->Speed025, &QPushButton::clicked, this, [=](){speed025();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
+    connect(ui->Speed2, &QPushButton::clicked, this, [=](){speed2();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->PlayButton, &QPushButton::clicked, this, [=](){machine->play(speedOption);});
 }
 
@@ -179,17 +180,19 @@ void MainWindow::printMemory(Memory& memo, int change, int wait){
     for(int i = 0; i < 16; i++){
         tmp += "  0x" + ALU::decToHex(i) + " ";
     }
-    out += "<font style='color:#FAFAFB;'>" + QString::fromStdString(tmp) + " | " "<\font><div style='line-height: 0.48;'><br></div>";
+    out += "<font color='#FAFAFB'>" + QString::fromStdString(tmp) + "<\font><div style='line-height: 0.48;'><br></div>";
     for(int i = 0; i < 16; i++){
-        out += "<font style='color:#FAFAFB;'>" + QString::fromStdString("0x" + ALU::decToHex(i)) + " | " "<\font>";
+        out += "<font color='#FAFAFB'>" + QString::fromStdString("0x" + ALU::decToHex(i)) + "<\font>";
+        out += QString::fromStdString(" | ");
         for(int j = 0 ; j < 16; j++){
             if((i * 16 + j) == change || (i * 16 + j) == change + 1){
-                out += "<font style='color:#1391DB;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font color='#1391DB'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
             } else if((i * 16 + j) == wait || (i * 16 + j) == wait + 1){
-                out += "<font style='color:#ffd91e;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font color='#ffd91e'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
             } else{
-                out += "<font style='color:#4E9A06;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + " | " "<\font>";
+                out += "<font color='#4E9A06'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
             }
+            out += QString::fromStdString(" | ");
         }
         out += "<br><div style='line-height: 0.48;'><br></div>";
     }
@@ -201,4 +204,36 @@ void MainWindow::printPCIR(CPU& cp){
     output += "\nIR: " + cp.getIR();
 
     ui->VariablesWindow->setText(QString::fromStdString(output));
+}
+
+void MainWindow::speed1(){
+    ui->Speed1->setStyleSheet("/* Normal state */QPushButton {background-color: #2E95C1;    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed025->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed05->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed2->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    speedOption = 0;
+}
+
+void MainWindow::speed05(){
+    ui->Speed05->setStyleSheet("/* Normal state */QPushButton {background-color: #2E95C1;    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed025->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed1->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed2->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    speedOption = 1;
+}
+
+void MainWindow::speed025(){
+    ui->Speed025->setStyleSheet("/* Normal state */QPushButton {background-color: #2E95C1;    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed1->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed05->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed2->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    speedOption = 2;
+}
+
+void MainWindow::speed2(){
+    ui->Speed2->setStyleSheet("/* Normal state */QPushButton {background-color: #2E95C1;    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed025->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed05->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    ui->Speed1->setStyleSheet("/* Normal state */QPushButton {background-color: rgb(57, 117, 0);    color: #FFFFFF;/* Text color */	border-radius: 2px;	font: 9pt 'Retro Gaming';background-repeat: no-repeat; /* Ensures the image is not repeated */background-size: contain;/* Adjusts the size of the image */  background-position: center;  /* Center the image */}QPushButton:hover {	background-color: rgb(118, 142, 96);}QPushButton:pressed {	background-color: rgb(25, 44, 8);    color: #575757;/* Text color */padding-top: 2px; /* Moves content down */  padding-bottom: 2px;}QPushButton .text {    font-size: 10px;    margin-left: 5px;}");
+    speedOption = 3;
 }

@@ -105,6 +105,13 @@ build CMakeFiles/VoleMachineSim.dir/Main.cpp.obj: CXX_COMPILER__VoleMachineSim_u
   OBJECT_DIR = CMakeFiles\VoleMachineSim.dir
   OBJECT_FILE_DIR = CMakeFiles\VoleMachineSim.dir
 
+build CMakeFiles/VoleMachineSim.dir/MratShamshoonGUI/CU.cpp.obj: CXX_COMPILER__VoleMachineSim_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CU.cpp || cmake_object_order_depends_target_VoleMachineSim
+  DEP_FILE = CMakeFiles\VoleMachineSim.dir\MratShamshoonGUI\CU.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\VoleMachineSim.dir
+  OBJECT_FILE_DIR = CMakeFiles\VoleMachineSim.dir\MratShamshoonGUI
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target VoleMachineSim
@@ -113,7 +120,7 @@ build CMakeFiles/VoleMachineSim.dir/Main.cpp.obj: CXX_COMPILER__VoleMachineSim_u
 #############################################
 # Link the executable VoleMachineSim.exe
 
-build VoleMachineSim.exe: CXX_EXECUTABLE_LINKER__VoleMachineSim_Debug CMakeFiles/VoleMachineSim.dir/Src/ALU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CPU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Machine.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/MainUI.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Memory.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Register.cpp.obj CMakeFiles/VoleMachineSim.dir/Main.cpp.obj
+build VoleMachineSim.exe: CXX_EXECUTABLE_LINKER__VoleMachineSim_Debug CMakeFiles/VoleMachineSim.dir/Src/ALU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CPU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Machine.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/MainUI.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Memory.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Register.cpp.obj CMakeFiles/VoleMachineSim.dir/Main.cpp.obj CMakeFiles/VoleMachineSim.dir/MratShamshoonGUI/CU.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\VoleMachineSim.dir
@@ -122,6 +129,89 @@ build VoleMachineSim.exe: CXX_EXECUTABLE_LINKER__VoleMachineSim_Debug CMakeFiles
   TARGET_FILE = VoleMachineSim.exe
   TARGET_IMPLIB = libVoleMachineSim.dll.a
   TARGET_PDB = VoleMachineSim.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target new_target
+
+
+#############################################
+# Order-only phony target for new_target
+
+build cmake_object_order_depends_target_new_target: phony || CMakeFiles/new_target.dir
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/CU.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CU.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\CU.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/ALU.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/ALU.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\ALU.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/CPU.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CPU.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\CPU.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/Machine.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Machine.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\Machine.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/main.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/main.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\main.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/mainwindow.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/mainwindow.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\mainwindow.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/Memory.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Memory.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\Memory.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+build CMakeFiles/new_target.dir/MratShamshoonGUI/Register.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Register.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\MratShamshoonGUI\Register.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir\MratShamshoonGUI
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target new_target
+
+
+#############################################
+# Link the executable new_target.exe
+
+build new_target.exe: CXX_EXECUTABLE_LINKER__new_target_Debug CMakeFiles/new_target.dir/MratShamshoonGUI/CU.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/ALU.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/CPU.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/Machine.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/main.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/mainwindow.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/Memory.cpp.obj CMakeFiles/new_target.dir/MratShamshoonGUI/Register.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = new_target.exe
+  TARGET_IMPLIB = libnew_target.dll.a
+  TARGET_PDB = new_target.exe.dbg
 
 
 #############################################
@@ -151,6 +241,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build VoleMachineSim: phony VoleMachineSim.exe
 
+build new_target: phony new_target.exe
+
 # =============================================================================
 # Folder targets.
 
@@ -159,7 +251,7 @@ build VoleMachineSim: phony VoleMachineSim.exe
 #############################################
 # Folder: C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/cmake-build-debug
 
-build all: phony VoleMachineSim.exe
+build all: phony VoleMachineSim.exe new_target.exe
 
 # =============================================================================
 # Built-in targets

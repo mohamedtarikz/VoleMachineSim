@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1865</width>
-    <height>897</height>
+    <height>905</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -704,15 +704,6 @@ QPushButton .text {
     font-size: 10px;
     margin-left: 5px;
 }
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
-}
 </string>
               </property>
               <property name="text">
@@ -1014,7 +1005,6 @@ border: 2px solid #ffffff;
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

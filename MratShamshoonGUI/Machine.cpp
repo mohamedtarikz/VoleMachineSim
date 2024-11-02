@@ -23,10 +23,12 @@ Memory& Machine::getMemory() {
 void Machine::clear(){
     cpu.clear();
     mem.clear();
+    playing = 0;
 }
 
 void Machine::reset(){
     cpu.clear();
+    playing = 0;
 }
 
 void Machine::play(int speed){
@@ -39,7 +41,7 @@ void Machine::play(int speed){
         } else if(speed == 2){
             delay = 3000;
         } else if (speed == 3) {
-            delay = 0;
+            delay = 300;
         }
         while(playing && cpu.getPC() <= 254){
             cpu.runNextStep(mem);
@@ -50,4 +52,12 @@ void Machine::play(int speed){
         }
         playing = false;
     }
+}
+
+void Machine::stop(){
+    playing = 0;
+}
+
+bool Machine::isPlaying(){
+    return playing;
 }

@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // Set the application icon
     a.setWindowIcon(QIcon(":/new/Logo/resources/Karen_screen_stock_art.ico")); // Replace with your icon path
 
     // Apply dark palette

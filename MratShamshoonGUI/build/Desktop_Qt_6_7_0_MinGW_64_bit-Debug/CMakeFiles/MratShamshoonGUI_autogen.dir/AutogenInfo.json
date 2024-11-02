@@ -247,7 +247,8 @@
 		"D:/Qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets.cmake",
 		"D:/Qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake",
 		"D:/Qt/6.7.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake",
-		"D:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake"
+		"D:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake",
+		"C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI",
 	"DEP_FILE" : "C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/deps",

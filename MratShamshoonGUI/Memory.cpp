@@ -13,7 +13,7 @@ Memory::Memory(){
 // Method to load memory from a file
 int Memory::loadMemory(fstream &file) {
     string byte;
-    int i = 0;
+    int i = 2;
     while(i < 256 && file >> byte){
         if(byte.size() != 4){
             continue;

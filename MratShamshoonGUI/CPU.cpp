@@ -3,7 +3,7 @@
 
 // Constructor to initialize the CPU
 CPU::CPU() : reg() {
-    PC = 0;// Initialize Program Counter to 0
+    PC = 2;// Initialize Program Counter to 0
     IR = "0000";
 }
 
@@ -119,7 +119,7 @@ Register& CPU::getRegister() {
 void CPU::clear(){
     reg.clear();
 
-    PC = 0;
+    PC = 2;
     IR = "0000";
 
     emit CPUupdated();

@@ -1,3 +1,4 @@
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/cmake-build-debug/CMakeFiles/VoleMachineSim.dir
+C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/cmake-build-debug/CMakeFiles/new_target.dir
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/cmake-build-debug/CMakeFiles/rebuild_cache.dir
