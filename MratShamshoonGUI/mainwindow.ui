@@ -20,73 +20,6 @@
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0" rowspan="2">
-       <layout class="QVBoxLayout" name="Screenandpcir">
-        <item>
-         <widget class="QLabel" name="screenWindow">
-          <property name="minimumSize">
-           <size>
-            <width>243</width>
-            <height>727</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>243</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: #0A0A0A;
-
-font: 22pt &quot;Glass TTY VT220&quot;;
-color: #4E9A06;
-
-border: 2px solid #ffffff;
-
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center;     /* Vertical centering */
-
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="VariablesWindow">
-          <property name="minimumSize">
-           <size>
-            <width>243</width>
-            <height>120</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>243</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: #0A0A0A;
-
-font: 32pt &quot;Glass TTY VT220&quot;;
-color: #FFFFFF;
-
-border: 2px solid #ffffff;
-
- qproperty-alignment: 'AlignLeft | AlignVCenter';
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="0" column="1">
        <layout class="QHBoxLayout" name="controlpanel">
         <item>
@@ -993,6 +926,66 @@ border: 2px solid #ffffff;
 
 
   display: flex;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0" rowspan="2">
+       <layout class="QVBoxLayout" name="Screenandpcir">
+        <item>
+         <widget class="QTextEdit" name="textEdit">
+          <property name="minimumSize">
+           <size>
+            <width>243</width>
+            <height>727</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>243</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
+
+font: 22pt &quot;Glass TTY VT220&quot;;
+color: #4E9A06;
+
+border: 2px solid #ffffff;
+
+  display: flex;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="VariablesWindow">
+          <property name="minimumSize">
+           <size>
+            <width>243</width>
+            <height>120</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>243</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #0A0A0A;
+
+font: 32pt &quot;Glass TTY VT220&quot;;
+color: #FFFFFF;
+
+border: 2px solid #ffffff;
+
+ qproperty-alignment: 'AlignLeft | AlignVCenter';
+</string>
           </property>
           <property name="text">
            <string/>

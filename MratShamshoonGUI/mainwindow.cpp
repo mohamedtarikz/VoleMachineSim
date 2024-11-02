@@ -15,10 +15,11 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignLeft);
-    ui->screenWindow->setAlignment(Qt::AlignTop);
-    ui->screenWindow->setAlignment(Qt::AlignHCenter);
+    ui->textEdit->setAlignment(Qt::AlignTop);
+    ui->textEdit->setAlignment(Qt::AlignHCenter);
     ui->VariablesWindow->setAlignment(Qt::AlignLeft);
-    ui->screenWindow->setWordWrap(true);
+    ui->textEdit->setReadOnly(true);
+
 
     textboxes[0] = &(*(ui->InputA));
     textboxes[1] = &(*(ui->InputB));
@@ -46,8 +47,8 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](int change){printMemory(machine->getMemory(), change, machine->getCPU().getPC());});
     connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());printMemory(machine->getMemory(), -2, machine->getCPU().getPC());});
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str, int type){printToScreen(str, type);});
-    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->screenWindow->clear();printToScreen("Screen", 1);});
-    connect(ui->Reset, &QPushButton::clicked, this, [=](){machine->reset();ui->screenWindow->clear();printToScreen("Screen", 1);});
+    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->textEdit->clear();printToScreen("Screen", 1);});
+    connect(ui->Reset, &QPushButton::clicked, this, [=](){machine->reset();ui->textEdit->clear();printToScreen("Screen", 1);});
     connect(ui->Speed1, &QPushButton::clicked, this, [=](){speed1();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->Speed05, &QPushButton::clicked, this, [=](){speed05();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->Speed025, &QPushButton::clicked, this, [=](){speed025();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
@@ -121,11 +122,11 @@ void MainWindow::loadFile()
             printToScreen("Invalid File", 0);
         }
         else{
-            string outPath = "File Path: " + filePathStr;
+            string outPath = filePathStr;
             QString out = QString::fromStdString(outPath);
             ui->FilePathLabel->setText(out);
-            if(machine)
-                memIndex = machine->getMemory().loadMemory(file);
+            ui->FilePathLabel->setToolTip(out);
+            memIndex = machine->getMemory().loadMemory(file);
         }
         file.close();
     }
@@ -146,17 +147,25 @@ bool MainWindow::validExtension(string fileName){
     }
 }
 
-void MainWindow::printToScreen(string str, int type){
+void MainWindow::printToScreen(string str, int type) {
     QString tmp = QString::fromStdString(str);
     QString out;
-    if(type == 0){
+
+    if (type == 0) {
         out = "<font color='#cc0000'>" + tmp + "</font><br>";
-    } else if(type == 1){
+    } else if (type == 1) {
         out = "<font color='#FAFAFB'>" + tmp + "</font><br>";
-    } else if(type == 2){
+    } else if (type == 2) {
         out = "<font color='#4E9A06'>" + tmp + "</font><br>";
     }
-    ui->screenWindow->setText(ui->screenWindow->text() + out);
+
+    // Append the text to the screen
+    ui->textEdit->append(out);
+
+    // Scroll to the bottom
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    ui->textEdit->setTextCursor(cursor);
 }
 
 void MainWindow::printRegister(Register& reg, int idx){
@@ -186,13 +195,15 @@ void MainWindow::printMemory(Memory& memo, int change, int wait){
         out += QString::fromStdString(" | ");
         for(int j = 0 ; j < 16; j++){
             if((i * 16 + j) == change || (i * 16 + j) == change + 1){
-                out += "<font color='#1391DB'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
+                out += "<font style='color:#1391DB;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) ;
+                out += "<font style='color:#FAFAFB;'> | </font>";
             } else if((i * 16 + j) == wait || (i * 16 + j) == wait + 1){
-                out += "<font color='#ffd91e'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
+                out += "<font style='color:#ffd91e;'>" + QString::fromStdString(memo.getCell(i * 16 + j));
+                out += "<font style='color:#FAFAFB;'> | </font>";
             } else{
-                out += "<font color='#4E9A06'>" + QString::fromStdString(memo.getCell(i * 16 + j)) + "<\font>";
+                out += "<font style='color:#4E9A06;'>" + QString::fromStdString(memo.getCell(i * 16 + j)) ;
+                out += "<font style='color:#FAFAFB;'> | </font>";
             }
-            out += QString::fromStdString(" | ");
         }
         out += "<br><div style='line-height: 0.48;'><br></div>";
     }
