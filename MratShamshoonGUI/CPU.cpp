@@ -97,7 +97,7 @@ void CPU::runNextStep(Memory& mem) {
         cu.halt(PC); // Halt the execution
     }
     fetch(mem); // Fetch the next instruction
-    if(alu.isValid(IR)) {// Check if the instruction is valid
+    if(ALU::isValid(IR)) {// Check if the instruction is valid
         try {
             vector<int> instruction = decode(); // Decode the instruction
             execute(reg, mem, instruction); // Execute the instruction

@@ -53,7 +53,7 @@ class ALU {
     string cnvrtToFloatingPoint(double);
 public:
     // Method to check if a string is a valid hexadecimal number
-    bool isValid(string);
+    static bool isValid(string);
     // Method to convert a binary string to a decimal integer in two's complement form
     static int cnvrtTwosComplement(string);
     // Method to convert a hexadecimal string to a decimal integer
