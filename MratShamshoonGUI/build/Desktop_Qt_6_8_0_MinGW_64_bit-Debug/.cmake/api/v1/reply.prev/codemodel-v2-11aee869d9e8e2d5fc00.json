@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-96cb23ca89b851c336aa.json",
+					"jsonFile" : "directory-.-Debug-ebba1282d2af48927f35.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MratShamshoonGUI::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MratShamshoonGUI-Debug-46517fc3fc9cacc16c14.json",
+					"jsonFile" : "target-MratShamshoonGUI-Debug-3b7e23aca09508b73d17.json",
 					"name" : "MratShamshoonGUI",
 					"projectIndex" : 0
 				},

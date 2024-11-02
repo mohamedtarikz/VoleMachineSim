@@ -23,11 +23,11 @@
       <item row="0" column="0" rowspan="2">
        <layout class="QVBoxLayout" name="Screenandpcir">
         <item>
-         <widget class="QLabel" name="screenWindow">
+         <widget class="QTextEdit" name="textEdit">
           <property name="minimumSize">
            <size>
-            <width>243</width>
-            <height>727</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -44,14 +44,7 @@ color: #4E9A06;
 
 border: 2px solid #ffffff;
 
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center;     /* Vertical centering */
-
-</string>
-          </property>
-          <property name="text">
-           <string/>
+  display: flex;</string>
           </property>
          </widget>
         </item>
@@ -91,6 +84,239 @@ border: 2px solid #ffffff;
        <layout class="QHBoxLayout" name="controlpanel">
         <item>
          <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="6">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="speedlabel">
+              <property name="styleSheet">
+               <string notr="true">text-align:center;
+font: 9pt &quot;Retro Gaming&quot;;
+color: rgb(255, 255, 255);
+qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
+</string>
+              </property>
+              <property name="text">
+               <string>Speed Controller</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Speed2">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>X2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Speed1">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+              </property>
+              <property name="text">
+               <string>X1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QPushButton" name="Speed025">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>X0.25</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="Speed05">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">/* Normal state */
+QPushButton {
+	background-color: rgb(57, 117, 0);
+    color: #FFFFFF;                    /* Text color */
+	border-radius: 2px;
+	font: 9pt &quot;Retro Gaming&quot;;
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */
+}
+
+QPushButton:hover {
+	background-color: rgb(118, 142, 96);
+}
+
+QPushButton:pressed {
+	background-color: rgb(25, 44, 8);
+    color: #575757;                    /* Text color */
+padding-top: 2px; /* Moves content down */
+  padding-bottom: 2px;
+	
+}
+
+QPushButton .text {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Hovering state */
+QPushButton:hover .icon {
+
+}
+
+QPushButton:hover .text {
+
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>X0.5</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
           <item row="0" column="0">
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
@@ -395,6 +621,25 @@ QPushButton:hover .text {
             </item>
            </layout>
           </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="4">
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
@@ -630,279 +875,8 @@ QPushButton:hover .text {
             </item>
            </layout>
           </item>
-          <item row="0" column="8">
-           <widget class="QLabel" name="label_3">
-            <property name="minimumSize">
-             <size>
-              <width>358</width>
-              <height>172</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-image: url(:/new/Logo/resources/Logo.png);
-  background-repeat: no-repeat; /* Ensures the image is not repeated */
-  background-size: contain;     /* Adjusts the size of the image */
-  background-position: center;  /* Center the image */</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="6">
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <property name="spacing">
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="speedlabel">
-              <property name="styleSheet">
-               <string notr="true">text-align:center;
-font: 9pt &quot;Retro Gaming&quot;;
-color: rgb(255, 255, 255);
-qproperty-alignment: 'AlignCenter'; /* Centers text horizontally and vertically */
-</string>
-              </property>
-              <property name="text">
-               <string>Speed Controller</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="Speed2">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* Normal state */
-QPushButton {
-	background-color: rgb(57, 117, 0);
-    color: #FFFFFF;                    /* Text color */
-	border-radius: 2px;
-	font: 9pt &quot;Retro Gaming&quot;;
-  background-repeat: no-repeat; /* Ensures the image is not repeated */
-  background-size: contain;     /* Adjusts the size of the image */
-  background-position: center;  /* Center the image */
-}
-
-QPushButton:hover {
-	background-color: rgb(118, 142, 96);
-}
-
-QPushButton:pressed {
-	background-color: rgb(25, 44, 8);
-    color: #575757;                    /* Text color */
-padding-top: 2px; /* Moves content down */
-  padding-bottom: 2px;
-	
-}
-
-QPushButton .text {
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
-}
-</string>
-              </property>
-              <property name="text">
-               <string>X2</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="Speed1">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* Normal state */
-QPushButton {
-	background-color: rgb(57, 117, 0);
-    color: #FFFFFF;                    /* Text color */
-	border-radius: 2px;
-	font: 9pt &quot;Retro Gaming&quot;;
-  background-repeat: no-repeat; /* Ensures the image is not repeated */
-  background-size: contain;     /* Adjusts the size of the image */
-  background-position: center;  /* Center the image */
-}
-
-QPushButton:hover {
-	background-color: rgb(118, 142, 96);
-}
-
-QPushButton:pressed {
-	background-color: rgb(25, 44, 8);
-    color: #575757;                    /* Text color */
-padding-top: 2px; /* Moves content down */
-  padding-bottom: 2px;
-	
-}
-
-QPushButton .text {
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
-}
-</string>
-              </property>
-              <property name="text">
-               <string>X1</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
-               <widget class="QPushButton" name="Speed025">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">/* Normal state */
-QPushButton {
-	background-color: rgb(57, 117, 0);
-    color: #FFFFFF;                    /* Text color */
-	border-radius: 2px;
-	font: 9pt &quot;Retro Gaming&quot;;
-  background-repeat: no-repeat; /* Ensures the image is not repeated */
-  background-size: contain;     /* Adjusts the size of the image */
-  background-position: center;  /* Center the image */
-}
-
-QPushButton:hover {
-	background-color: rgb(118, 142, 96);
-}
-
-QPushButton:pressed {
-	background-color: rgb(25, 44, 8);
-    color: #575757;                    /* Text color */
-padding-top: 2px; /* Moves content down */
-  padding-bottom: 2px;
-	
-}
-
-QPushButton .text {
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>X0.25</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="Speed05">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">/* Normal state */
-QPushButton {
-	background-color: rgb(57, 117, 0);
-    color: #FFFFFF;                    /* Text color */
-	border-radius: 2px;
-	font: 9pt &quot;Retro Gaming&quot;;
-  background-repeat: no-repeat; /* Ensures the image is not repeated */
-  background-size: contain;     /* Adjusts the size of the image */
-  background-position: center;  /* Center the image */
-}
-
-QPushButton:hover {
-	background-color: rgb(118, 142, 96);
-}
-
-QPushButton:pressed {
-	background-color: rgb(25, 44, 8);
-    color: #575757;                    /* Text color */
-padding-top: 2px; /* Moves content down */
-  padding-bottom: 2px;
-	
-}
-
-QPushButton .text {
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>X0.5</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
           <item row="0" column="7">
            <widget class="QLabel" name="label_5">
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="label">
             <property name="minimumSize">
              <size>
               <width>70</width>
@@ -933,6 +907,25 @@ QPushButton:hover .text {
               <width>10</width>
               <height>16777215</height>
              </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="8">
+           <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>358</width>
+              <height>172</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-image: url(:/new/Logo/resources/Logo.png);
+  background-repeat: no-repeat; /* Ensures the image is not repeated */
+  background-size: contain;     /* Adjusts the size of the image */
+  background-position: center;  /* Center the image */</string>
             </property>
             <property name="text">
              <string/>
