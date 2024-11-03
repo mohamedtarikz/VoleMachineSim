@@ -1,4 +1,4 @@
-#include "VoleMachine.h"
+#include "VoleMachineSim.h"
 
 Register::Register() {
     for (int i = 0; i < size; i++) {
@@ -18,12 +18,4 @@ void Register::setCell(int index, int value) {
         throw runtime_error("Index out of range");
     }
     memory[index] = value;
-
-    emit registerUpdated(index);
-}
-void Register::clear(){
-    for(int i = 0 ; i <size ; i++ ){
-        memory[i] = 0;
-    }
-    emit registerUpdated(-1);
 }

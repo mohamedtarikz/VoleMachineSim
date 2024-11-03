@@ -1,4 +1,4 @@
-#include "VoleMachine.h"
+#include "VoleMachineSim.h"
 #include <regex>
 #include <valarray>
 
@@ -81,14 +81,11 @@ string ALU::decToBin(int dec, int size) {
 // Validate if a given hexadecimal string represents a valid instruction
 bool ALU::isValid(string hex) {
     bool valid = false;
-    if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex[0] == '7' || hex[0] == '8' || hex[0] == '9' || hex [0] == 'B' || hex[0] == 'D'){
-        valid |= regex_match(hex, regex("(1|2|3|5|6|7|8|9|B|D)[0-9A-F]{3}"));
+    if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex [0] == 'B'){
+        valid |= regex_match(hex, regex("(1|2|3|5|6|B)[0-9A-F]{3}"));
     }
     else if(hex[0] == '4'){
         valid |= regex_match(hex, regex("40[0-9A-F]{2}"));
-    }
-    else if(hex[0] == 'A'){
-        valid |= regex_match(hex, regex("A[0-9A-F]0[0-9A-F]"));
     }
     else if(hex[0] == 'C'){
         valid |= regex_match(hex, regex("C[0]{3}"));
@@ -136,11 +133,11 @@ string ALU::decToHex(int dec) {
 void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
     string s1 = decToBin(reg.getCell(idxRegister2));
     string s2 = decToBin(reg.getCell(idxRegister3));
-    int exp1 = binToDec(s1.substr(1, 3)) - 4;
-    int exp2 = binToDec(s2.substr(1, 3)) - 4;
+    int exp1 = binToDec(s1.substr(1, 3)) - 3;
+    int exp2 = binToDec(s2.substr(1, 3)) - 3;
     double mant1 = binToDec(s1.substr(4, 4)) / 16.0 + 1;
     double mant2 = binToDec(s2.substr(4, 4)) / 16.0 + 1;
-    if(exp1 > exp2){
+    if(exp1 < exp2){
         swap(exp1, exp2);
         swap(mant1, mant2);
     }
@@ -176,28 +173,7 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     reg.setCell(idxRegister1, z);
 }
 
-void ALU::orOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
-    reg.setCell(idxRegister1, reg.getCell(idxRegister2) | reg.getCell(idxRegister3));
-}
-
-void ALU::andOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
-    reg.setCell(idxRegister1, reg.getCell(idxRegister2) & reg.getCell(idxRegister3));
-}
-
-void ALU::xorOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
-    reg.setCell(idxRegister1, reg.getCell(idxRegister2) ^ reg.getCell(idxRegister3));
-}
-
-void ALU::rotation(int idxRegister, int n, Register& reg){
-    string str = decToBin(reg.getCell(idxRegister));
-    string result;
-
-    for(int i = str.size() - n; i < str.size(); i++){
-        result += str[i];
-    }
-    for (int i = 0; i < str.size() - n; i++) {
-        result += str[i];
-    }
-
-    reg.setCell(idxRegister, binToDec(result));
+// Add two numbers and store the result in a register
+void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
+    reg.setCell(idxRegister1, reg.getCell(idxRegister2) + reg.getCell(idxRegister3));
 }
