@@ -41,7 +41,7 @@ void Machine::play(int speed){
         } else if(speed == 2){
             delay = 3000;
         } else if (speed == 3) {
-            delay = 300;
+            delay = 0;
         }
         while(playing && cpu.getPC() <= 254){
             cpu.runNextStep(mem);

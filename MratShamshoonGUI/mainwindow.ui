@@ -348,6 +348,9 @@ QPushButton:hover .text {
                     <height>16777215</height>
                    </size>
                   </property>
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Clears the: Memory cells,&lt;br/&gt;Registers, Screen, and PC.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">/* Normal state */
 QPushButton {
@@ -408,8 +411,7 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6a00;&quot;&gt;Resets Pc to zero&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6a00;&quot;&gt;while keeping Memmory&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6a00;&quot;&gt;Resets Pc to zero&lt;br /&gt;while keeping Memory&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">/* Normal state */
@@ -469,6 +471,9 @@ QPushButton:hover .text {
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#fefefe;&quot;&gt;Steps over by a one step.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">/* Normal state */
 QPushButton {
@@ -521,10 +526,13 @@ QPushButton:hover .text {
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2a89b2;&quot;&gt;Plays all the instructions ,&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;and Pauses when you want.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">/* Normal state */
 QPushButton {
-	background-image: url(:/new/Butoon/resources/Play all.png);
+	background-image: url(:/new/Butoon/resources/Play all_Play.png);
 	border-radius: 1px;
   background-repeat: no-repeat; /* Ensures the image is not repeated */
   background-size: contain;     /* Adjusts the size of the image */
@@ -537,20 +545,6 @@ QPushButton:hover {
 
 QPushButton:pressed {
 	background-image: url(:/new/Button_P/resources/Play all_p.png);
-}
-
-QPushButton .text {
-    font-size: 10px;
-    margin-left: 5px;
-}
-
-/* Hovering state */
-QPushButton:hover .icon {
-
-}
-
-QPushButton:hover .text {
-
 }
 </string>
                 </property>

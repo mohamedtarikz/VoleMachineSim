@@ -12,6 +12,8 @@
         <file>resources/Play all.png</file>
         <file>resources/Reset Button.png</file>
         <file>resources/Add Button.png</file>
+        <file>resources/Play all_Pause.png</file>
+        <file>resources/Play all_Play.png</file>
     </qresource>
     <qresource prefix="/new/Button_P">
         <file>resources/Add Button_p.png</file>
