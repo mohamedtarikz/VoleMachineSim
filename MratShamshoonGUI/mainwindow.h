@@ -43,7 +43,7 @@ private:
     void speed05();
     void speed025();
     void speed2();
-    void PlayButton();
+    void PlayButton(bool);
 };
 
 class SpecialKeysEvent : public QObject{

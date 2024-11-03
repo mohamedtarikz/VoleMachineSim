@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    qputenv("QT_SCALE_FACTOR", "0.75");
+
     QApplication a(argc, argv);
 
     a.setWindowIcon(QIcon(":/new/Logo/resources/Karen_screen_stock_art.ico")); // Replace with your icon path

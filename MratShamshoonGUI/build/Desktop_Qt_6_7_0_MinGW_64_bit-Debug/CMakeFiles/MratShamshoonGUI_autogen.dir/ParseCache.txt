@@ -368,6 +368,8 @@ C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/VoleMachine.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wctype.h
+C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CPU.cpp
+C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CU.cpp
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/mainwindow.h
  mmc:Q_OBJECT
  mdp:C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/VoleMachine.h
@@ -781,8 +783,6 @@ C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/mainwindow.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wctype.h
-C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CPU.cpp
-C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CU.cpp
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/ALU.cpp
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Machine.cpp
 C:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/Memory.cpp

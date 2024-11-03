@@ -38,6 +38,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     printToScreen("Screen", 1);
     printPCIR(machine->getCPU());
     speed1();
+    PlayButton(machine->isPlaying());
 
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
@@ -47,13 +48,13 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     connect(&(machine->getMemory()), &Memory::MemoryUpdated, this, [=](int change){printMemory(machine->getMemory(), change, machine->getCPU().getPC());});
     connect(&(machine->getCPU()), &CPU::CPUupdated, this, [=](){printPCIR(machine->getCPU());printMemory(machine->getMemory(), -2, machine->getCPU().getPC());});
     connect(&(machine->getCPU()), &CPU::printUpdate, this, [=](string str, int type){printToScreen(str, type);});
-    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();memIndex = 0;ui->textEdit->clear();printToScreen("Screen", 1);});
-    connect(ui->Reset, &QPushButton::clicked, this, [=](){machine->reset();ui->textEdit->clear();printToScreen("Screen", 1);});
+    connect(ui->Clear, &QPushButton::clicked, this, [=](){machine->clear();ui->FilePathLabel->setText("file path");memIndex = 2;ui->textEdit->clear();printToScreen("Screen", 1);PlayButton(machine->isPlaying());});
+    connect(ui->Reset, &QPushButton::clicked, this, [=](){machine->reset();ui->textEdit->clear();printToScreen("Screen", 1);PlayButton(machine->isPlaying());});
     connect(ui->Speed1, &QPushButton::clicked, this, [=](){speed1();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->Speed05, &QPushButton::clicked, this, [=](){speed05();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->Speed025, &QPushButton::clicked, this, [=](){speed025();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
     connect(ui->Speed2, &QPushButton::clicked, this, [=](){speed2();if(machine->isPlaying()){machine->stop();machine->play(speedOption);}});
-    connect(ui->PlayButton, &QPushButton::clicked, this, [=](){PlayButton();machine->play(speedOption);});   
+    connect(ui->PlayButton, &QPushButton::clicked, this, [=](){PlayButton(!(machine->isPlaying()));machine->play(speedOption);});
 }
 
 MainWindow::~MainWindow()
@@ -255,10 +256,10 @@ void MainWindow::speed2(){
     speedOption = 3;
 }
 
-void MainWindow::PlayButton() {
-    if (machine->isPlaying()) {
-        ui->PlayButton->setStyleSheet("QPushButton { background-image: url(:/new/Butoon/resources/Play all_Play.png); border-radius: 1px; background-repeat: no-repeat; background-size: contain; background-position: center; } QPushButton:hover { background-image: url(:/new/Button_H/resources/Play all_h.png); } QPushButton:pressed { background-image: url(:/new/Button_P/resources/Play all_p.png); }");
-    } else {
+void MainWindow::PlayButton(bool playing) {
+    if (playing) {
         ui->PlayButton->setStyleSheet("QPushButton { background-image: url(:/new/Butoon/resources/Play all_Pause.png); border-radius: 1px; background-repeat: no-repeat; background-size: contain; background-position: center; } QPushButton:hover { background-image: url(:/new/Button_H/resources/Play all_h.png); } QPushButton:pressed { background-image: url(:/new/Button_P/resources/Play all_p.png); }");
+    } else {
+        ui->PlayButton->setStyleSheet("QPushButton { background-image: url(:/new/Butoon/resources/Play all_Play.png); border-radius: 1px; background-repeat: no-repeat; background-size: contain; background-position: center; } QPushButton:hover { background-image: url(:/new/Button_H/resources/Play all_h.png); } QPushButton:pressed { background-image: url(:/new/Button_P/resources/Play all_p.png); }");
     }
 }

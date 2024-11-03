@@ -23,12 +23,12 @@ Memory& Machine::getMemory() {
 void Machine::clear(){
     cpu.clear();
     mem.clear();
-    playing = 0;
+    playing = false;
 }
 
 void Machine::reset(){
     cpu.clear();
-    playing = 0;
+    playing = false;
 }
 
 void Machine::play(int speed){
@@ -55,7 +55,7 @@ void Machine::play(int speed){
 }
 
 void Machine::stop(){
-    playing = 0;
+    playing = false;
 }
 
 bool Machine::isPlaying(){
