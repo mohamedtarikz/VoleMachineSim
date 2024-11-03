@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/new/Logo">
+        <file>resources/Logo.png</file>
+        <file>resources/Karen_screen_stock_art.ico</file>
+        <file>resources/retro.ttf</file>
+        <file>resources/digital-7.ttf</file>
+        <file>resources/Glass_TTY_VT220.ttf</file>
+    </qresource>
+    <qresource prefix="/new/Butoon">
+        <file>resources/clear button.png</file>
+        <file>resources/One step.png</file>
+        <file>resources/Play all.png</file>
+        <file>resources/Reset Button.png</file>
+        <file>resources/Add Button.png</file>
+        <file>resources/Play all_Pause.png</file>
+        <file>resources/Play all_Play.png</file>
+    </qresource>
+    <qresource prefix="/new/Button_P">
+        <file>resources/Add Button_p.png</file>
+        <file>resources/clear button_p.png</file>
+        <file>resources/One step_p.png</file>
+        <file>resources/Play all_p.png</file>
+        <file>resources/Reset Button_p.png</file>
+    </qresource>
+    <qresource prefix="/new/Button_H">
+        <file>resources/Add Button_h.png</file>
+        <file>resources/clear button_h.png</file>
+        <file>resources/One step_h.png</file>
+        <file>resources/Play all_h.png</file>
+        <file>resources/Reset Button_h.png</file>
+    </qresource>
+</RCC>
