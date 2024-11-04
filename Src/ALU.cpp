@@ -2,7 +2,6 @@
 #include <regex>
 #include <valarray>
 
-// Convert a decimal number to its floating-point binary representation
 string ALU::cnvrtToFloatingPoint(double dec) {
     char sign = '0'; // Determine the sign bit
     if(dec < 0){
@@ -27,15 +26,15 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     while(all.size() < 8){
         all += '0';
     }
-    int idx = 0;
-    while(all[idx] == '0' && idx < all.size()){
-        idx++;
+    size_t idx = all.find_first_of('1');
+    if(idx == string::npos){
+        return "00000000";
     }
-    int exp = intPartBin.size() - idx + 3; // Calculate the exponent
+    int exp = intPartBin.size() - idx + 4; // Calculate the exponent
     if(!(exp >= 0 && exp <= 7)){
         throw runtime_error("Floating point overflow");
     }
-    string mant = all.substr(idx + 1, 4); // Extract the mantissa
+    string mant = all.substr(idx, 4); // Extract the mantissa
     return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
 
@@ -81,11 +80,14 @@ string ALU::decToBin(int dec, int size) {
 // Validate if a given hexadecimal string represents a valid instruction
 bool ALU::isValid(string hex) {
     bool valid = false;
-    if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex [0] == 'B'){
-        valid |= regex_match(hex, regex("(1|2|3|5|6|B)[0-9A-F]{3}"));
+    if(hex[0] == '1' || hex[0] == '2' || hex[0] == '3' || hex[0] == '5' || hex[0] == '6' || hex[0] == '7' || hex[0] == '8' || hex[0] == '9' || hex [0] == 'B' || hex[0] == 'D'){
+        valid |= regex_match(hex, regex("(1|2|3|5|6|7|8|9|B|D)[0-9A-F]{3}"));
     }
     else if(hex[0] == '4'){
         valid |= regex_match(hex, regex("40[0-9A-F]{2}"));
+    }
+    else if(hex[0] == 'A'){
+        valid |= regex_match(hex, regex("A[0-9A-F]0[0-9A-F]"));
     }
     else if(hex[0] == 'C'){
         valid |= regex_match(hex, regex("C[0]{3}"));
@@ -133,20 +135,15 @@ string ALU::decToHex(int dec) {
 void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
     string s1 = decToBin(reg.getCell(idxRegister2));
     string s2 = decToBin(reg.getCell(idxRegister3));
-    int exp1 = binToDec(s1.substr(1, 3)) - 3;
-    int exp2 = binToDec(s2.substr(1, 3)) - 3;
-    double mant1 = binToDec(s1.substr(4, 4)) / 16.0 + 1;
-    double mant2 = binToDec(s2.substr(4, 4)) / 16.0 + 1;
-    if(exp1 < exp2){
-        swap(exp1, exp2);
-        swap(mant1, mant2);
-    }
-    while(exp2 > exp1){
-        mant1 *= 2;
-        exp1--;
-    }
-    double ans = mant1 * pow(2, exp1) * pow(-1, s1[0] - '0') + mant2 * pow(2, exp2) * pow(-1, s2[0] - '0');
-    if(!(ans >= -31 && ans <= 31)){
+    int sign1 = s1[0] - '0';
+    int sign2 = s2[0] - '0';
+    int exp1 = binToDec(s1.substr(1, 3)) - 4;
+    int exp2 = binToDec(s2.substr(1, 3)) - 4;
+    double mant1 = binToDec(s1.substr(4, 4)) / 16.0;
+    double mant2 = binToDec(s2.substr(4, 4)) / 16.0;
+
+    double ans = mant1 * pow(2, exp1) * pow(-1, sign1) + mant2 * pow(2, exp2) * pow(-1, sign2);
+    if(!(ans >= -7.5 && ans <= 7.5)){
         throw runtime_error("Floating point overflow");
     }
     string s = cnvrtToFloatingPoint(ans);
@@ -173,7 +170,28 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     reg.setCell(idxRegister1, z);
 }
 
-// Add two numbers and store the result in a register
-void ALU::add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
-    reg.setCell(idxRegister1, reg.getCell(idxRegister2) + reg.getCell(idxRegister3));
+void ALU::orOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
+    reg.setCell(idxRegister1, reg.getCell(idxRegister2) | reg.getCell(idxRegister3));
+}
+
+void ALU::andOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
+    reg.setCell(idxRegister1, reg.getCell(idxRegister2) & reg.getCell(idxRegister3));
+}
+
+void ALU::xorOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg){
+    reg.setCell(idxRegister1, reg.getCell(idxRegister2) ^ reg.getCell(idxRegister3));
+}
+
+void ALU::rotation(int idxRegister, int n, Register& reg){
+    string str = decToBin(reg.getCell(idxRegister));
+    string result;
+
+    for(int i = str.size() - n; i < str.size(); i++){
+        result += str[i];
+    }
+    for (int i = 0; i < str.size() - n; i++) {
+        result += str[i];
+    }
+
+    reg.setCell(idxRegister, binToDec(result));
 }

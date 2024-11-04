@@ -63,10 +63,20 @@ void CPU::execute(Register& reg, Memory& mem, vector<int> instruction) {
         alu.sumTwosComplement(instruction[1], instruction[2], instruction[3], reg);
     } else if(instruction[0] == 6) {
         alu.sumFloatingPoint(instruction[1], instruction[2], instruction[3], reg);
-    } else if(instruction[0] == 11) {
-        cu.jump(instruction[1], instruction[2], reg, PC);
-    } else if(instruction[0] == 12) {
+    }else if(instruction[0] == 7) {
+        alu.orOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 8) {
+        alu.andOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 9) {
+        alu.xorOperator(instruction[1], instruction[2], instruction[3], reg);
+    } else if(instruction[0] == 10){
+        alu.rotation(instruction[1], instruction[2], reg);
+    } else if(instruction[0] == 11){
+        cu.jump(false, instruction[1], instruction[2], reg, PC);
+    } else if(instruction[0] == 12){
         cu.halt(reg, mem, PC, IR);
+    } else if(instruction[0] == 13) {
+        cu.jump(true, instruction[1], instruction[2], reg, PC);
     }
 }
 
