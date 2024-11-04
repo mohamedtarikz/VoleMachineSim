@@ -45,11 +45,11 @@ public:
 class ALU {
     // Method to convert a decimal integer to a floating point binary string
     string cnvrtToFloatingPoint(double);
-    // Method to convert a binary string to a decimal integer in two's complement form
-    int cnvrtTwosComplement(string);
 public:
     // Method to check if a string is a valid hexadecimal number
     bool isValid(string);
+    // Method to convert a binary string to a decimal integer in two's complement form
+    static int cnvrtTwosComplement(string);
     // Method to convert a hexadecimal string to a decimal integer
     static int hexToDec(string);
     // Method to convert a decimal integer to a hexadecimal string
@@ -61,8 +61,14 @@ public:
     // Method to sum
     void sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
     void sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
-    // Method to add to register values
-    void add(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Methods for OR operator
+    void orOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for AND operator
+    void andOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for XOR operator
+    void xorOperator(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg);
+    // Method for rotating binary
+    void rotation(int idxRegister, int n, Register& reg);
 };
 
 // CU class to handle control operations
@@ -77,7 +83,7 @@ public:
     // Method to move a value from one register to another
     void move(int idxRegister1, int idxRegister2, Register& reg);
     // Method to jump to a memory location
-    void jump(int idxRegister, int idxMemory, Register& reg, int& PC);
+    void jump(bool choice, int idxRegister, int idxMemory, Register& reg, int& PC);
     // Method to halt the program
     void halt(Register& reg, Memory& mem, int PC, string IR);
 };

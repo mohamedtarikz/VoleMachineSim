@@ -105,13 +105,6 @@ build CMakeFiles/VoleMachineSim.dir/Main.cpp.obj: CXX_COMPILER__VoleMachineSim_u
   OBJECT_DIR = CMakeFiles\VoleMachineSim.dir
   OBJECT_FILE_DIR = CMakeFiles\VoleMachineSim.dir
 
-build CMakeFiles/VoleMachineSim.dir/MratShamshoonGUI/CU.cpp.obj: CXX_COMPILER__VoleMachineSim_unscanned_Debug C$:/Users/moham/Desktop/My-Jithob/VoleMachineSim/MratShamshoonGUI/CU.cpp || cmake_object_order_depends_target_VoleMachineSim
-  DEP_FILE = CMakeFiles\VoleMachineSim.dir\MratShamshoonGUI\CU.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/moham/Desktop/My-Jithob/VoleMachineSim/Src
-  OBJECT_DIR = CMakeFiles\VoleMachineSim.dir
-  OBJECT_FILE_DIR = CMakeFiles\VoleMachineSim.dir\MratShamshoonGUI
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target VoleMachineSim
@@ -120,7 +113,7 @@ build CMakeFiles/VoleMachineSim.dir/MratShamshoonGUI/CU.cpp.obj: CXX_COMPILER__V
 #############################################
 # Link the executable VoleMachineSim.exe
 
-build VoleMachineSim.exe: CXX_EXECUTABLE_LINKER__VoleMachineSim_Debug CMakeFiles/VoleMachineSim.dir/Src/ALU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CPU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Machine.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/MainUI.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Memory.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Register.cpp.obj CMakeFiles/VoleMachineSim.dir/Main.cpp.obj CMakeFiles/VoleMachineSim.dir/MratShamshoonGUI/CU.cpp.obj
+build VoleMachineSim.exe: CXX_EXECUTABLE_LINKER__VoleMachineSim_Debug CMakeFiles/VoleMachineSim.dir/Src/ALU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CPU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/CU.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Machine.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/MainUI.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Memory.cpp.obj CMakeFiles/VoleMachineSim.dir/Src/Register.cpp.obj CMakeFiles/VoleMachineSim.dir/Main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\VoleMachineSim.dir

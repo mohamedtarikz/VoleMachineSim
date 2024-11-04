@@ -28,6 +28,10 @@ void Machine::clear(){
 
 void Machine::reset(){
     cpu.clear();
+    if(mem.getCell(0)!="00" || mem.getCell(1)!="00"){
+        mem.setCell(1,"00");
+        mem.setCell(0,"00");
+    }
     playing = false;
 }
 

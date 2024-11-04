@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QFileDialog>
-
+#include <QDebug>
 MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     : QMainWindow(parent), machine(p_machine)
     , ui(new Ui::MainWindow)
@@ -217,11 +217,66 @@ void MainWindow::printMemory(Memory& memo, int change, int wait){
     ui->memoryWindow->setText(out);
 }
 
-void MainWindow::printPCIR(CPU& cp){
+void MainWindow::printPCIR(CPU& cp) {
     string output = "PC: 0x" + ALU::decToHex(cp.getPC());
-    output += "\nIR: " + cp.getIR();
+    string ir = cp.getIR();
+    string outputIR = "\nIR: " + ir;
+    output += outputIR;
+    string tooltip;
+    if (ir[0] == '1') {
+        tooltip = "LOAD register "
+                  + string(1, ir[1])
+                  + " with the bit pattern found in the memory cell at address "
+                  + string(1, ir[2]) + string(1, ir[3]);
+    }
+    else if (ir[0] == '2') {
+        tooltip = "LOAD register "
+                  + string(1, ir[1])
+                  + " with the bit pattern "
+                  + string(1, ir[2]) + string(1, ir[3]);
+    }
+    else if (ir[0] == '3') {
+        if (ir[2] == '0' && ir[3] == '0') {
+            tooltip = "STORE the bit pattern found in register "
+                      + string(1, ir[1])
+                      + " to location 00 (screen output)";
+        } else {
+            tooltip = "STORE the bit pattern found in register "
+                      + string(1, ir[1])
+                      + " in the memory cell at address "
+                      + string(1, ir[2]) + string(1, ir[3]);
+        }
+    }
+    else if (ir[0] == '4') {
+        tooltip = "MOVE the bit pattern found in register "
+                  + string(1, ir[2])
+                  + " to register "
+                  + string(1, ir[3]);
+    }
+    else if (ir[0] == '5') {
+        tooltip = "ADD (two's complement) the bit patterns in registers "
+                  + string(1, ir[2]) + " and " + string(1, ir[3])
+                  + " and leave the result in register "
+                  + string(1, ir[1]);
+    }
+    else if (ir[0] == '6') {
+        tooltip = "ADD (floating-point) the bit patterns in registers "
+                  + string(1, ir[2]) + " and " + string(1, ir[3])
+                  + " and leave the result in register "
+                  + string(1, ir[1]);
+    }
+    else if (ir[0] == 'B') {
+        tooltip = "JUMP to address " + string(1, ir[2]) + string(1, ir[3])
+        + " if register " + string(1, ir[1])
+            + " equals register 0, otherwise continue normal execution";
+    }
+    else if (ir[0] == 'C') {
+        tooltip = "HALT execution";
+    }
 
+    QString tool = QString::fromStdString(tooltip);
     ui->VariablesWindow->setText(QString::fromStdString(output));
+    ui->VariablesWindow->setToolTip(tool);
 }
 
 void MainWindow::speed1(){
