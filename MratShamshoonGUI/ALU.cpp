@@ -1,6 +1,5 @@
 #include "VoleMachine.h"
 #include <regex>
-#include <valarray>
 
 // Convert a decimal number to its floating-point binary representation
 string ALU::cnvrtToFloatingPoint(double dec) {
@@ -27,15 +26,15 @@ string ALU::cnvrtToFloatingPoint(double dec) {
     while(all.size() < 8){
         all += '0';
     }
-    int idx = 0;
-    while(all[idx] == '0' && idx < all.size()){
-        idx++;
+    size_t idx = all.find_first_of('1');
+    if(idx == string::npos){
+        return "00000000";
     }
-    int exp = intPartBin.size() - idx + 3; // Calculate the exponent
+    int exp = intPartBin.size() - idx + 4; // Calculate the exponent
     if(!(exp >= 0 && exp <= 7)){
         throw runtime_error("Floating point overflow");
     }
-    string mant = all.substr(idx + 1, 4); // Extract the mantissa
+    string mant = all.substr(idx, 4); // Extract the mantissa
     return sign + decToBin(exp, 3) + mant; // Combine sign, exponent, and mantissa
 }
 
@@ -136,20 +135,15 @@ string ALU::decToHex(int dec) {
 void ALU::sumFloatingPoint(int idxRegister1, int idxRegister2, int idxRegister3, Register& reg) {
     string s1 = decToBin(reg.getCell(idxRegister2));
     string s2 = decToBin(reg.getCell(idxRegister3));
+    int sign1 = s1[0] - '0';
+    int sign2 = s2[0] - '0';
     int exp1 = binToDec(s1.substr(1, 3)) - 4;
     int exp2 = binToDec(s2.substr(1, 3)) - 4;
-    double mant1 = binToDec(s1.substr(4, 4)) / 16.0 + 1;
-    double mant2 = binToDec(s2.substr(4, 4)) / 16.0 + 1;
-    if(exp1 > exp2){
-        swap(exp1, exp2);
-        swap(mant1, mant2);
-    }
-    while(exp2 > exp1){
-        mant1 *= 2;
-        exp1--;
-    }
-    double ans = mant1 * pow(2, exp1) * pow(-1, s1[0] - '0') + mant2 * pow(2, exp2) * pow(-1, s2[0] - '0');
-    if(!(ans >= -31 && ans <= 31)){
+    double mant1 = binToDec(s1.substr(4, 4)) / 16.0;
+    double mant2 = binToDec(s2.substr(4, 4)) / 16.0;
+
+    double ans = mant1 * pow(2, exp1) * pow(-1, sign1) + mant2 * pow(2, exp2) * pow(-1, sign2);
+    if(!(ans >= -7.5 && ans <= 7.5)){
         throw runtime_error("Floating point overflow");
     }
     string s = cnvrtToFloatingPoint(ans);
