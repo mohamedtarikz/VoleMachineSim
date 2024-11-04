@@ -28,7 +28,9 @@
 		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Add Button.png",
 		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Reset Button.png",
 		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/One step.png",
-		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Play all.png"
+		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Play all_Play.png",
+		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Play all.png",
+		"D:/projects/VoleMachineSim/MratShamshoonGUI/resources/Play all_Pause.png"
 	],
 	"LOCK_FILE" : "D:/projects/VoleMachineSim/MratShamshoonGUI/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/MratShamshoonGUI_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
