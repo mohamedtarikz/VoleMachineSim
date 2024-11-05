@@ -162,7 +162,8 @@ void ALU::sumTwosComplement(int idxRegister1, int idxRegister2, int idxRegister3
     }
     if(z < 0){
         string s = decToBin(-z, 8);
-        for(int i = 0; s[i] != '1' && i < s.size(); ++i){
+        int idx = s.find_last_of('1');
+        for(int i = 0; i < idx; ++i){
             s[i] = (s[i] == '0' ? '1' : '0');
         }
         z = binToDec(s);
