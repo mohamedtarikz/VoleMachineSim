@@ -249,7 +249,7 @@ build MratShamshoonGUI_autogen/EWIEGA46WW/qrc_Resources.cpp | ${cmake_ninja_work
 #############################################
 # Phony custom command for CMakeFiles\MratShamshoonGUI_autogen_timestamp_deps
 
-build CMakeFiles/MratShamshoonGUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/MratShamshoonGUI_autogen_timestamp_deps: phony D$:/Qt/6.7.0/mingw_64/lib/libQt6Core.a D$:/Qt/6.7.0/mingw_64/./bin/uic.exe D$:/Qt/6.7.0/mingw_64/./bin/moc.exe D$:/Qt/6.7.0/mingw_64/lib/libQt6Widgets.a
+build CMakeFiles/MratShamshoonGUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/MratShamshoonGUI_autogen_timestamp_deps: phony D$:/Qt/6.7.0/mingw_64/./bin/uic.exe D$:/Qt/6.7.0/mingw_64/./bin/moc.exe D$:/Qt/6.7.0/mingw_64/lib/libQt6Core.a D$:/Qt/6.7.0/mingw_64/lib/libQt6Widgets.a
 
 
 #############################################

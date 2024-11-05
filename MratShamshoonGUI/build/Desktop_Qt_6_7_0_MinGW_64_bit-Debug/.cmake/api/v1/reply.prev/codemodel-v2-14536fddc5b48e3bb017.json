@@ -44,11 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MratShamshoonGUI::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-14536fddc5b48e3bb017.json
 					"jsonFile" : "target-MratShamshoonGUI-Debug-185585fd2b1f40dc3a81.json",
-========
-					"jsonFile" : "target-MratShamshoonGUI-Debug-3b7e23aca09508b73d17.json",
->>>>>>>> 8f64391f03ac2b95a482a76a10cfe9bfa90327e3:MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-11aee869d9e8e2d5fc00.json
 					"name" : "MratShamshoonGUI",
 					"projectIndex" : 0
 				},
