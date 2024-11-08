@@ -606,29 +606,7 @@
 		{
 			"backtrace" : 4,
 			"path" : "Resources.qrc",
-<<<<<<<< HEAD:MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-MratShamshoonGUI-Debug-185585fd2b1f40dc3a81.json
-========
 			"sourceGroupIndex" : 2
-		},
-		{
-			"backtrace" : 0,
-			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/include/ui_mainwindow.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 0,
-			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/timestamp",
->>>>>>>> 8f64391f03ac2b95a482a76a10cfe9bfa90327e3:MratShamshoonGUI/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-MratShamshoonGUI-Debug-3b7e23aca09508b73d17.json
-			"sourceGroupIndex" : 2
-		},
-		{
-			"backtrace" : 0,
-			"compileGroupIndex" : 0,
-			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/EWIEGA46WW/qrc_Resources.cpp",
-			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
@@ -659,12 +637,6 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/EWIEGA46WW/qrc_Resources.cpp.rule",
-			"sourceGroupIndex" : 3
-		},
-		{
-			"backtrace" : 0,
-			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/MratShamshoonGUI_autogen/EWIEGA46WW/qrc_Resources.cpp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

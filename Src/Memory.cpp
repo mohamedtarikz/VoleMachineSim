@@ -12,10 +12,10 @@ Memory::Memory(){
 }
 
 // Constructor to initialize memory from a file
-Memory::Memory(fstream& file){
+Memory::Memory(fstream& file, int start){
     string byte;
-    int i = 0;
-    while(i < 256 && file >> byte){
+    int i = start;
+    while(i < 255 && file >> byte){
         if(byte.size() != 4){
             cout << "Invalid instruction: " << byte << endl;
             continue;
@@ -34,8 +34,8 @@ Memory::Memory(fstream& file){
 }
 
 // Constructor to initialize memory from a vector of instructions
-Memory::Memory(vector<string> instructions){
-    for(int i = 0; i < (size/2) && i < instructions.size(); i++){
+Memory::Memory(vector<string> instructions, int start){
+    for(int i = 0; i < (size/2 - 1) && i < instructions.size(); i++){
         if(instructions[i].size() != 4){
             cout << "Invalid instruction: " << instructions[i] << endl;
             continue;
@@ -43,19 +43,19 @@ Memory::Memory(vector<string> instructions){
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
-        memory[i*2] = tmp; // Store the first half of the instruction
+        memory[i * 2 + start] = tmp; // Store the first half of the instruction
         tmp = "";
         tmp += instructions[i][2];
         tmp += instructions[i][3];
-        memory[i*2+1] = tmp; // Store the second half of the instruction
+        memory[i * 2 + 1 + start] = tmp; // Store the second half of the instruction
     }
 }
 
 // Method to load memory from a file
-void Memory::loadMemory(fstream &file) {
+void Memory::loadMemory(fstream &file, int start) {
     string byte;
-    int i = 0;
-    while(i < 256 && file >> byte){
+    int i = start;
+    while(i < 255 && file >> byte){
         if(byte.size() != 4){
             cout << "Invalid instruction: " << byte << endl;
             continue;
@@ -74,8 +74,8 @@ void Memory::loadMemory(fstream &file) {
 }
 
 // Method to load memory from a vector of instructions
-void Memory::loadMemory(vector<string> instructions) {
-    for(int i = 0; i < (size/2) && i < instructions.size(); i++){
+void Memory::loadMemory(vector<string> instructions, int start) {
+    for(int i = 0; i < (size/2 - 1) && i < instructions.size(); i++){
         if(instructions[i].size() != 4){
             cout << "Invalid instruction: " << instructions[i] << endl;
             continue;
@@ -83,11 +83,11 @@ void Memory::loadMemory(vector<string> instructions) {
         string tmp;
         tmp += instructions[i][0];
         tmp += instructions[i][1];
-        memory[i*2] = tmp; // Store the first half of the instruction
+        memory[i * 2 + start] = tmp; // Store the first half of the instruction
         tmp = "";
         tmp += instructions[i][2];
         tmp += instructions[i][3];
-        memory[i*2+1] = tmp; // Store the second half of the instruction
+        memory[i * 2 + 1 + start] = tmp; // Store the second half of the instruction
     }
 }
 

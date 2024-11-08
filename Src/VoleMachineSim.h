@@ -15,13 +15,13 @@ public:
     // Constructor to initialize memory with zeros
     Memory();
     // Constructor to initialize memory from a file
-    explicit Memory(fstream&);
+    explicit Memory(fstream&, int = 2);
     // Constructor to initialize memory from a vector of instructions
-    explicit Memory(vector<string>);
+    explicit Memory(vector<string>, int = 2);
     // Method to load memory from a file
-    void loadMemory(fstream& file);
+    void loadMemory(fstream& file, int start = 2);
     // Method to load memory from a vector of instructions
-    void loadMemory(vector<string> instructions);
+    void loadMemory(vector<string> instructions, int start = 2);
     // Method to set a value in a memory cell
     void setCell(int index, string value);
     // Method to get a value from a memory cell
@@ -140,7 +140,7 @@ public:
     // Method to display the operation menu
     int DisplayOperationMenu(Machine& machine);
     // Method to load instructions manually
-    vector<string> loadInstruction();
+    vector<string> loadInstruction(int start = 2);
     // Method to handle the output choice
     void handleChoiceOutput(int choice, Machine& machine);
     // Method to handle the operation choice

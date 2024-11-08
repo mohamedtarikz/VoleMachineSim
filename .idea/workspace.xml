@@ -21,18 +21,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="909cca0d-38db-4b8a-ae50-b8eeaad3a60b" name="Changes" comment="Added new instructions to console application">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2024_11_59_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2024_11_59_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="909cca0d-38db-4b8a-ae50-b8eeaad3a60b" name="Changes" comment="Asking user where he wants to start in the memory">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_30_2024_8_50_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_30_2024_8_50_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/VoleMachineSim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Src/VoleMachineSim.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +114,9 @@
       <workItem from="1730310528111" duration="1764000" />
       <workItem from="1730313192774" duration="1879000" />
       <workItem from="1730413033811" duration="2202000" />
-      <workItem from="1730749960316" duration="749000" />
+      <workItem from="1730749960316" duration="1318000" />
+      <workItem from="1730844351499" duration="1167000" />
+      <workItem from="1730979809097" duration="1286000" />
     </task>
     <task id="LOCAL-00001" summary="LoadingMemory - DONE">
       <option name="closed" value="true" />
@@ -352,7 +350,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730750680142</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Adjusted Memory to start from index 2">
+      <option name="closed" value="true" />
+      <created>1730980066120</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1730980066120</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Asking user where he wants to start in the memory">
+      <option name="closed" value="true" />
+      <created>1730980736773</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1730980736773</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +408,8 @@
     <MESSAGE value="GUI - Initial commit" />
     <MESSAGE value="GUI - TextBoxes Done" />
     <MESSAGE value="Added new instructions to console application" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new instructions to console application" />
+    <MESSAGE value="Adjusted Memory to start from index 2" />
+    <MESSAGE value="Asking user where he wants to start in the memory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Asking user where he wants to start in the memory" />
   </component>
 </project>

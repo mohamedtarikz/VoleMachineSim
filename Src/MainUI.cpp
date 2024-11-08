@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
+#include <cmath>
 
 // Function to get user input choice with validation
 int GetInputChoice(const string& prompt, int gratest_choice) {
@@ -52,7 +53,7 @@ fstream MainUI::LoadFile() {
 }
 
 // Method to load instructions manually
-vector<string> MainUI::loadInstruction() {
+vector<string> MainUI::loadInstruction(int start) {
     vector<string> instructions;
     string instruction;
     int counter = 0;
@@ -64,7 +65,7 @@ vector<string> MainUI::loadInstruction() {
         if (instruction == "C000")
             break;
         counter++;
-        if (counter == 127) {
+        if (counter == 127 - ceil(start/2.0)) {
             cout << "You have reached the maximum number of instructions." << endl;
             instructions.push_back("C000");
             break;
@@ -126,14 +127,50 @@ int MainUI::DisplayOutputMenu(Machine& machine) {
 // Method to handle the operation choice
 void MainUI::handleChoiceOperation(int choice, Machine& machine) {
     if (choice == 1) {
+        cout << "Enter your desired start index in the memory: ";
+        string strStart;
+        int start;
+        bool ok = false;
+        getline(cin, strStart);
+        while(!ok) {
+            ok = true;
+            for (int i = 0; i < strStart.size(); ++i) {
+                if(!isdigit(strStart[i])) {
+                    ok = false;
+                    cout << "Invalid input. Please enter a decimal number." << endl;
+                    break;
+                }
+            }
+            if (ok) {
+                start = stoi(strStart);
+            }
+        }
         fstream file;
         file = LoadFile();
-        machine.getMemory().loadMemory(file);
+        machine.getMemory().loadMemory(file, start);
         DisplayOutputMenu(machine);
         return;
     } else if (choice == 2) {
+        cout << "Enter your desired start index in the memory: ";
+        string strStart;
+        int start;
+        bool ok = false;
+        getline(cin, strStart);
+        while(!ok) {
+            ok = true;
+            for (int i = 0; i < strStart.size(); ++i) {
+                if(!isdigit(strStart[i])) {
+                    ok = false;
+                    cout << "Invalid input. Please enter a decimal number." << endl;
+                    break;
+                }
+            }
+            if (ok) {
+                start = stoi(strStart);
+            }
+        }
         vector<string> instructions = loadInstruction();
-        machine.getMemory().loadMemory(instructions);
+        machine.getMemory().loadMemory(instructions, start);
         DisplayOutputMenu(machine);
         return;
     }else if(choice == 3){

@@ -267,60 +267,91 @@ void MainWindow::printPCIR(CPU& cp) {
     string outputIR = "\nIR: " + ir;
     output += outputIR;
     string tooltip;
-    if (ir[0] == '1') {
-        tooltip = "LOAD register "
-                  + string(1, ir[1])
-                  + " with the bit pattern found in the memory cell at address "
-                  + string(1, ir[2]) + string(1, ir[3]);
-    }
-    else if (ir[0] == '2') {
-        tooltip = "LOAD register "
-                  + string(1, ir[1])
-                  + " with the bit pattern "
-                  + string(1, ir[2]) + string(1, ir[3]);
-    }
-    else if (ir[0] == '3') {
-        if (ir[2] == '0' && ir[3] == '0') {
-            tooltip = "STORE the bit pattern found in register "
+    if(ALU::isValid(ir)){
+        if (ir[0] == '1') {
+            tooltip = "LOAD register "
                       + string(1, ir[1])
-                      + " to location 00 (screen output)";
-        } else {
-            tooltip = "STORE the bit pattern found in register "
-                      + string(1, ir[1])
-                      + " in the memory cell at address "
+                      + " with the bit pattern found in the memory cell at address "
                       + string(1, ir[2]) + string(1, ir[3]);
         }
+        else if (ir[0] == '2') {
+            tooltip = "LOAD register "
+                      + string(1, ir[1])
+                      + " with the bit pattern "
+                      + string(1, ir[2]) + string(1, ir[3]);
+        }
+        else if (ir[0] == '3') {
+            if (ir[2] == '0' && ir[3] == '0') {
+                tooltip = "STORE the bit pattern found in register "
+                          + string(1, ir[1])
+                          + " to location 00 (screen output)";
+            } else {
+                tooltip = "STORE the bit pattern found in register "
+                          + string(1, ir[1])
+                          + " in the memory cell at address "
+                          + string(1, ir[2]) + string(1, ir[3]);
+            }
+        }
+        else if (ir[0] == '4') {
+            tooltip = "MOVE the bit pattern found in register "
+                      + string(1, ir[2])
+                      + " to register "
+                      + string(1, ir[3]);
+        }
+        else if (ir[0] == '5') {
+            tooltip = "ADD (two's complement) the bit patterns in registers "
+                      + string(1, ir[2]) + " and " + string(1, ir[3])
+                      + " and leave the result in register "
+                      + string(1, ir[1]);
+        }
+        else if (ir[0] == '6') {
+            tooltip = "ADD (floating-point) the bit patterns in registers "
+                      + string(1, ir[2]) + " and " + string(1, ir[3])
+                      + " and leave the result in register "
+                      + string(1, ir[1]);
+        }
+        else if(ir[0] == '7'){
+            tooltip = "OR the bit patterns in registers "
+                      + string(1, ir[2]) + " and " + string(1, ir[3])
+                      + "and leave the result in register "
+                      + string(1, ir[1]);
+        }
+        else if(ir[0] == '8'){
+            tooltip = "AND the bit patterns in registers "
+                      + string(1, ir[2]) + " and " + string(1, ir[3])
+                      + "and leave the result in register "
+                      + string(1, ir[1]);
+        }
+        else if(ir[0] == '9'){
+            tooltip = "XOR the bit patterns in registers "
+                      + string(1, ir[2]) + " and " + string(1, ir[3])
+                      + "and leave the result in register "
+                      + string(1, ir[1]);
+        }
+        else if(ir[0] == 'A'){
+            tooltip = "ROTATE the bit pattern in register "
+                      + string(1, ir[1]) + " for "
+                      + string(1, ir[3]) + " times";
+        }
+        else if (ir[0] == 'B') {
+            tooltip = "JUMP to address " + string(1, ir[2]) + string(1, ir[3])
+                      + " if register " + string(1, ir[1])
+                      + " equals register 0";
+        }
+        else if (ir[0] == 'C') {
+            tooltip = "HALT execution";
+        }
+        else if(ir[0] == 'D'){
+            tooltip = "JUMP to address " + string(1, ir[2]) + string(1, ir[3])
+                      + " if register " + string(1, ir[1])
+                      + " greater than register 0";
+        }
     }
-    else if (ir[0] == '4') {
-        tooltip = "MOVE the bit pattern found in register "
-                  + string(1, ir[2])
-                  + " to register "
-                  + string(1, ir[3]);
+    else if(ir != "0000"){
+        tooltip = "INVALID OPERATION";
     }
-    else if (ir[0] == '5') {
-        tooltip = "ADD (two's complement) the bit patterns in registers "
-                  + string(1, ir[2]) + " and " + string(1, ir[3])
-                  + " and leave the result in register "
-                  + string(1, ir[1]);
-    }
-    else if (ir[0] == '6') {
-        tooltip = "ADD (floating-point) the bit patterns in registers "
-                  + string(1, ir[2]) + " and " + string(1, ir[3])
-                  + " and leave the result in register "
-                  + string(1, ir[1]);
-    }
-    else if (ir[0] == 'B') {
-        tooltip = "JUMP to address " + string(1, ir[2]) + string(1, ir[3])
-        + " if register " + string(1, ir[1])
-            + " equals register 0, otherwise continue normal execution";
-    }
-    else if (ir[0] == 'C') {
-        tooltip = "HALT execution";
-    }
-
-    QString tool = QString::fromStdString(tooltip);
     ui->VariablesWindow->setText(QString::fromStdString(output));
-    ui->VariablesWindow->setToolTip(tool);
+    ui->VariablesWindow->setToolTip(QString::fromStdString(tooltip));
 }
 
 void MainWindow::speed1(){
