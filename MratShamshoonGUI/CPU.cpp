@@ -18,6 +18,10 @@ int CPU::getPC() {
     return PC;
 }
 
+void CPU::setPC(int value){
+    PC = value;
+}
+
 // Method to fetch the next instruction from memory
 void CPU::fetch(Memory& mem) {
     if(PC >= 255) { // Check if the program counter has reached the end

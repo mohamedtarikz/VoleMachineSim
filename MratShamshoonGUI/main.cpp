@@ -4,11 +4,13 @@
 #include <QPalette>
 
 int main(int argc, char *argv[])
+
 {
     QApplication a(argc, argv);
 
     a.setWindowIcon(QIcon(":/new/Logo/resources/Karen_screen_stock_art.ico")); // Replace with your icon path
 
+    // Set the global stylesheet for QToolTip
     // Apply dark palette
     QPalette darkPalette;
     darkPalette.setColor(QPalette::Window, QColor(53, 53, 53));
@@ -27,6 +29,7 @@ int main(int argc, char *argv[])
 
     a.setPalette(darkPalette);
     a.setStyle("Fusion");
+    a.setStyleSheet("QToolTip { font-size: 12pt; color: white; background-color: black; }");
 
     Machine machine;
     MainWindow w(&machine);
@@ -35,4 +38,5 @@ int main(int argc, char *argv[])
     w.showMaximized(); // Shows the window maximized but keeps the menu bar visible
 
     return a.exec();
+
 }

@@ -16,7 +16,7 @@ public:
     // Constructor to initialize memory with zeros
     Memory();
     // Method to load memory from a file
-    int loadMemory(fstream& file);
+    int loadMemory(fstream& file,int start = 2);
     // Method to add a single instruction
     void addInstruction(string instruction, int index);
     // Method to set a value in a memory cell
@@ -117,6 +117,8 @@ public:
     CPU();
     string getIR();
     int getPC();
+
+    void setPC(int value);
     // Method to get the register object
     Register& getRegister();
     // Method to run the next step of the program

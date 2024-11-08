@@ -11,9 +11,9 @@ Memory::Memory(){
 }
 
 // Method to load memory from a file
-int Memory::loadMemory(fstream &file) {
+int Memory::loadMemory(fstream &file, int start) {
     string byte;
-    int i = 2;
+    int i = start;
     while(i < 256 && file >> byte){
         if(byte.size() != 4){
             continue;

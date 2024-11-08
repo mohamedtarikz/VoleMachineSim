@@ -2,16 +2,23 @@
 #include "./ui_mainwindow.h"
 #include <QFileDialog>
 #include <QDebug>
+#include <QApplication>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QLabel>
 MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     : QMainWindow(parent), machine(p_machine)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
     SpecialKeysEvent *filter[4] = {new SpecialKeysEvent, new SpecialKeysEvent, new SpecialKeysEvent, new SpecialKeysEvent};
 
     memIndex = 2;
     speedOption = 0;
+
 
     ui->registerWindow->setAlignment(Qt::AlignCenter);
     ui->memoryWindow->setAlignment(Qt::AlignCenter);
@@ -39,7 +46,7 @@ MainWindow::MainWindow(Machine* p_machine, QWidget *parent)
     printPCIR(machine->getCPU());
     speed1();
     PlayButton(machine->isPlaying());
-
+    // Assuming 'myButton' is a QPushButton you have already created
     connect(textboxes[3], &QLineEdit::returnPressed, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->AddInstructionButton, &QPushButton::clicked, this, [=](){addInstruction(textboxes[0]->text() + textboxes[1]->text() + textboxes[2]->text() + textboxes[3]->text());});
     connect(ui->LoadFileButton, &QPushButton::clicked, this, [=](){machine->clear();loadFile();});
@@ -112,6 +119,41 @@ void MainWindow::addInstruction(QString instruction){
 
 void MainWindow::loadFile()
 {
+    QDialog dia(this);
+    dia.setWindowTitle("Enter Input");
+    dia.setFixedSize(300,150);
+
+    QLabel label("  inlization program counter", &dia);
+    label.setFixedWidth(150);
+    QVBoxLayout layout(&dia);
+
+
+    QLineEdit inputField(&dia);
+
+    layout.addWidget(&inputField);
+
+    QPushButton okButton("OK", &dia);
+    layout.addWidget(&okButton);
+    connect(&okButton, &QPushButton::clicked, [&]() {
+        if (!inputField.text().isEmpty()) {
+
+            if(inputField.text().toInt() > 254){
+                inputField.setText("254");
+            }else if(inputField.text().toInt() < 2){
+                inputField.setText("2");
+            }
+            machine->getCPU().setPC(max(2, min(254, inputField.text().toInt())));
+
+            dia.accept();
+        }
+        else{
+            dia.accept();
+        }
+    });
+
+    dia.exec();
+
+
     // Open the file dialog
     QString filePath = QFileDialog::getOpenFileName(this, "Open File", "", "All Files (*)");
 
@@ -127,7 +169,7 @@ void MainWindow::loadFile()
             QString out = QString::fromStdString(outPath);
             ui->FilePathLabel->setText(out);
             ui->FilePathLabel->setToolTip(out);
-            memIndex = machine->getMemory().loadMemory(file);
+            memIndex = machine->getMemory().loadMemory(file,max(2, min(254, inputField.text().toInt())));
         }
         file.close();
     }
@@ -218,6 +260,8 @@ void MainWindow::printMemory(Memory& memo, int change, int wait){
 }
 
 void MainWindow::printPCIR(CPU& cp) {
+
+
     string output = "PC: 0x" + ALU::decToHex(cp.getPC());
     string ir = cp.getIR();
     string outputIR = "\nIR: " + ir;
