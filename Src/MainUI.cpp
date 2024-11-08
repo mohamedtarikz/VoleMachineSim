@@ -127,7 +127,7 @@ int MainUI::DisplayOutputMenu(Machine& machine) {
 // Method to handle the operation choice
 void MainUI::handleChoiceOperation(int choice, Machine& machine) {
     if (choice == 1) {
-        cout << "Enter your desired start index in the memory: ";
+        cout << "Enter your desired start index in the memory (2 - 254): ";
         string strStart;
         int start;
         bool ok = false;
@@ -142,7 +142,7 @@ void MainUI::handleChoiceOperation(int choice, Machine& machine) {
                 }
             }
             if (ok) {
-                start = stoi(strStart);
+                start = max(2, min(254, stoi(strStart)));
             }
         }
         fstream file;
@@ -151,7 +151,7 @@ void MainUI::handleChoiceOperation(int choice, Machine& machine) {
         DisplayOutputMenu(machine);
         return;
     } else if (choice == 2) {
-        cout << "Enter your desired start index in the memory: ";
+        cout << "Enter your desired start index in the memory (2 - 254): ";
         string strStart;
         int start;
         bool ok = false;
@@ -166,7 +166,7 @@ void MainUI::handleChoiceOperation(int choice, Machine& machine) {
                 }
             }
             if (ok) {
-                start = stoi(strStart);
+                start = max(2, min(254, stoi(strStart)));
             }
         }
         vector<string> instructions = loadInstruction();
